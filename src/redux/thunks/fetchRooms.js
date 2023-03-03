@@ -7,4 +7,4 @@ const fetchRooms = createAsyncThunk('rooms/fetch', async () => {
   return response.data;
 });
 
-export { fetchUsers };
+export { fetchRooms };
