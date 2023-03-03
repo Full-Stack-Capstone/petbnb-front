@@ -16,7 +16,7 @@ const petRoomsSlice = createSlice({
     error: null,
   },
   extraReducers(builder) {
-    builder.addCase(fetchRooms.pending, (state, action) => {
+    builder.addCase(fetchRooms.pending, (state, _) => {
       state.isLoading = true;
     });
     builder.addCase(fetchRooms.fulfilled, (state, action) => {
