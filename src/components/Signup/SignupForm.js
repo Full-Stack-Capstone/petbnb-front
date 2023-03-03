@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import signUpUser from '../redux/slices/signUpThunk';
+import signUpUser from '../../redux/thunks/signUpThunk';
 
 function SignUpForm() {
   const navigate = useNavigate();

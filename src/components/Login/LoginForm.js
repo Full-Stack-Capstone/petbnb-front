@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import loginUser from '../redux/slices/loginThunk';
+import loginUser from '../../redux/thunks/loginThunk';
 
 function LoginForm() {
   const [email, setEmail] = useState('');
