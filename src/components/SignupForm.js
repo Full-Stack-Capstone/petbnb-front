@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import signUpUser from '../redux/slices/signUpThunk';
 
 function SignUpForm() {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -19,6 +21,7 @@ function SignUpForm() {
       },
     };
     dispatch(signUpUser(credentials));
+    navigate('/');
   };
 
   return (

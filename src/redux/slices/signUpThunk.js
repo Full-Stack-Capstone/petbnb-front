@@ -1,9 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // import axios from 'axios';
 
-const signUpUser = createAsyncThunk('Signup', async (credentials) => {
+const signUpUser = createAsyncThunk('signup', async (credentials) => {
   await fetch('http://localhost:3001/signup', {
-    method: 'post',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -14,14 +14,13 @@ const signUpUser = createAsyncThunk('Signup', async (credentials) => {
         password: credentials.user.password,
       },
     }),
-  })
-    .then((res) => {
-      console.log(res);
-      console.log(res.headers.get('Authorization'));
+  }).then((res) => {
+    if (res.ok) {
       localStorage.setItem('token', res.headers.get('Authorization'));
-    })
-    .then((json) => console.dir(json))
-    .catch((err) => console.error(err));
+      return res.json();
+    }
+    throw new Error(res);
+  });
 });
 
 export default signUpUser;
