@@ -1,15 +1,15 @@
 import React from 'react';
-// import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import LoginForm from './LoginForm';
+import HomePage from './HomePage';
 
 function App() {
   return (
     <div className="app">
-      {/* <Routes>
-        <Route path="/" element={<Greeting />} />
-      </Routes> */}
-      <h1>Hello World!</h1>
-
-      <div className="btn btn-primary">Test Bootstrap</div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginForm />} />
+      </Routes>
     </div>
   );
 }
