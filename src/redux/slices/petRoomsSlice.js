@@ -1,10 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const fetchRooms = createAsyncThunk('rooms/fetch', async () => {
   const response = await axios.get('http://localhost:3000/user/1/pet_rooms');
-  
+
   return response.data;
 });
 
@@ -16,7 +15,7 @@ const petRoomsSlice = createSlice({
     error: null,
   },
   extraReducers(builder) {
-    builder.addCase(fetchRooms.pending, (state, _) => {
+    builder.addCase(fetchRooms.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(fetchRooms.fulfilled, (state, action) => {
