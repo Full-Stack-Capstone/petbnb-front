@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchRooms } from '../thunks/fetchRooms';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+
+export const fetchRooms = createAsyncThunk('rooms/fetch', async () => {
+  const response = await axios.get('http://localhost:3000/user/1/pet_rooms');
+  
+  return response.data;
+});
 
 const petRoomsSlice = createSlice({
   name: 'petRooms',
