@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRooms } from '../redux/slices/petRoomsSlice';
+import { fetchRooms } from '../../redux/slices/petRoomsSlice';
 
-function Test() {
+function Home() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.petRooms.data);
   useEffect(() => {
@@ -22,4 +22,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Home;
