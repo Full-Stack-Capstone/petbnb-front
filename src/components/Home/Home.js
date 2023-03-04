@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRooms } from '../../redux/slices/petRoomsSlice';
+import MyNavbar from '../Extra/Nav';
 
 function Home() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function Home() {
   ));
   return (
     <div>
+      <MyNavbar />
       <h1>{renderedRooms}</h1>
     </div>
   );

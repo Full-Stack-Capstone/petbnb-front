@@ -29,6 +29,9 @@
       }
     ]
   },
+  "settings": {
+    "import/core-modules": ["bootstrap"]
+  },
   "ignorePatterns": [
     "dist/",
     "build/"
