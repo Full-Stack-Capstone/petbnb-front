@@ -1,0 +1,12 @@
+.navbar-brand {
+  color: blue;
+  font-weight: 800;
+  /* max-width: 20%;
+  min-width: 15%; */
+  width: 15%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
