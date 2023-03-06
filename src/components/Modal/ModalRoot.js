@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ModalService from './ModalService';
-import styles from './ModalRoot.css';
+import './ModalRoot.css';
 
 export default function ModalRoot() {
   const [modal, setModal] = useState({});
@@ -24,7 +24,7 @@ export default function ModalRoot() {
   const ModalComponent = modal.component ? modal.component : null;
 
   return (
-    <section className={modal.component ? styles.modalRoot : ''}>
+    <section className={modal.component ? 'modalRoot' : ''}>
 
       { ModalComponent && (
         <ModalComponent

@@ -5,27 +5,27 @@ import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
 
-function MakeReservation(props) {
-  const { close } = props;
+function MakeReservation({ close }) {
+  // create a function to handle the click event of the button on the modal footer
+  const MakeReservation = () => {
+    // here is where we would dispatch an action to post to the API
+    console.log('MakeReservation button clicked');
+  };
+
   return (
     <Modal>
-      <ModalHeader>
-        <p>Room: My Awesome Room Title</p>
-        <button onClick={close} type="button" className="btn btn-primary">X</button>
-      </ModalHeader>
+      <ModalHeader title="Room: My Awesome Room Title" close={close} />
       <ModalBody>
         <p>Select the dates of your pet stay:</p>
         <input id="date" type="date" />
       </ModalBody>
-      <ModalFooter>
-        <button type="button" className="btn btn-primary">Reserve</button>
-      </ModalFooter>
+      <ModalFooter buttonName="Reserve" buttonFunc={MakeReservation} />
     </Modal>
   );
 }
 
+export default MakeReservation;
+
 MakeReservation.propTypes = {
   close: PropTypes.func.isRequired,
 };
-
-export default MakeReservation;
