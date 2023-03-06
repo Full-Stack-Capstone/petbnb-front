@@ -3,7 +3,7 @@ import { petRoomsReducer } from './slices/petRoomsSlice';
 
 const store = configureStore({
   reducer: {
-    petRooms: petRoomsReducer,
+    publicPetRooms: petRoomsReducer,
   },
 });
 
