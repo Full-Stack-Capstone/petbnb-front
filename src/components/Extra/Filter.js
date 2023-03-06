@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint jsx-a11y/label-has-associated-control: ["error", { assert: "either" } ] */
 import React from 'react';
 
 function RoomFilters({
