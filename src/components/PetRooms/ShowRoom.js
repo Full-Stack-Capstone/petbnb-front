@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchRoomId } from '../../redux/thunks/fetchRooms';
 import CalculateRating from '../Extra/CalculateRating';
+import ModalRoot from '../Modal/ModalRoot';
+import ModalService from '../Modal/ModalService';
+import MakeReservation from '../Reservations/MakeReservation';
 
 function ShowRoom() {
   const { id } = useParams();
@@ -11,6 +14,9 @@ function ShowRoom() {
   useEffect(() => {
     dispatch(fetchRoomId(id));
   }, [dispatch, id]);
+  const openModalMakeReservation = () => {
+    ModalService.open(MakeReservation);
+  };
   return (
     <div className="container">
       <div className="row justify-content-around">
@@ -26,6 +32,8 @@ function ShowRoom() {
           <p>{`Rating: ${room.rating ? CalculateRating(room.rating) : null}`}</p>
         </div>
       </div>
+      <button onClick={openModalMakeReservation} type="button" className="btn btn-primary m-4">Make Reservation</button>
+      <ModalRoot />
     </div>
   );
 }

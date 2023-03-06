@@ -5,6 +5,7 @@ import { fetchRooms } from '../../redux/thunks/fetchRooms';
 import './home.css';
 import RoomFilters from '../Extra/Filter';
 import CalculateRating from '../Extra/CalculateRating';
+import petroomImage from '../../images/petroom.jpg';
 
 function Home() {
   const dispatch = useDispatch();
@@ -29,18 +30,23 @@ function Home() {
   let renderedRooms = [];
   if (Array.isArray(rooms)) {
     renderedRooms = filteredRooms.map((room) => (
-      <Link key={room.id} to={`pet_room/${room.id}`} className="col-sm-3 border m-1 no-style-link">
-        <h2>{room.name}</h2>
-        <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
-        <p>{`Max sized accepted: ${room.max_size_accepted}`}</p>
-        <p>{`User Owner: ${room.user_id}`}</p>
-        <p>{`Rating: ${CalculateRating(room.rating)}`}</p>
-        <p>{`Price: ${room.price}`}</p>
+      <Link key={room.id} to={`pet_room/${room.id}`} className="col-sm-5 mb-2 border no-style-link d-flex">
+        <div className="w-50">
+          <h2>{room.name}</h2>
+          <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
+          <p>{`Max sized accepted: ${room.max_size_accepted}`}</p>
+          <p>{`User Owner: ${room.user_id}`}</p>
+          <p>{`Rating: ${CalculateRating(room.rating)}`}</p>
+          <p>{`Price: ${room.price}`}</p>
+        </div>
+        <div className="w-50">
+          <img src={petroomImage} alt="room-img" className="img-fluid" />
+        </div>
       </Link>
     ));
   }
   return (
-    <div className="container">
+    <div className="container-fluid">
       <RoomFilters
         typeOfPetFilter={typeOfPetFilter}
         setTypeOfPetFilter={setTypeOfPetFilter}
