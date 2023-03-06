@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { fetchRoomId } from '../../redux/thunks/fetchRooms';
 import CalculateRating from '../Extra/CalculateRating';
+import HomeCarousel from '../Extra/Carousel';
 import ModalRoot from '../Modal/ModalRoot';
 import ModalService from '../Modal/ModalService';
 import MakeReservation from '../Reservations/MakeReservation';
@@ -20,6 +21,7 @@ function ShowRoom() {
   return (
     <div className="container">
       <div className="row justify-content-around">
+        <HomeCarousel />
         <div key={room.id} to={`pet_room/${room.id}`} className="col-sm-3 border m-1">
           <h2>{room.name}</h2>
           <h2>
