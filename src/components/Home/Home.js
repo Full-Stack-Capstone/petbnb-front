@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchRooms } from '../../redux/thunks/fetchRooms';
 import './home.css';
-import RoomFilters from '../Extra/Filter';
-import CalculateRating from '../Extra/CalculateRating';
+import RoomFilters from './Filter';
+import CalculateRating from '../../utils/CalculateRating';
 import petroomImage from '../../images/petroom.jpg';
 
 function Home() {
