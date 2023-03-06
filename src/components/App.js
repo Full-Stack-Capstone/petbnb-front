@@ -11,6 +11,7 @@ import MyRooms from './PetRooms/MyRooms';
 import MyPets from './Pets/MyPets';
 import MyReservations from './Reservations/MyReservations';
 import MakeReservation from './Reservations/MakeReservation';
+import ShowRoom from './PetRooms/ShowRoom';
 
 function App() {
   const openModalMakeReservation = () => {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
         <Route path="/all-rooms" element={<AllRooms />} />
+        <Route path="/pet_room/:id" element={<ShowRoom />} />
         <Route path="/my-rooms" element={<MyRooms />} />
         <Route path="/my-pets" element={<MyPets />} />
         <Route path="/my-reservations" element={<MyReservations />} />
