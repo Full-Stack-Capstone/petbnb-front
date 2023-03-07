@@ -1,10 +1,6 @@
-.navbar-brand {
-  color: blue;
-  font-weight: 800;
-  /* max-width: 20%;
-  min-width: 15%; */
-  width: 15%;
-}
+/* * {
+  border: 1px solid red;
+} */
 
 img {
   max-width: 100%;
@@ -13,4 +9,21 @@ img {
 
 .icon-nav {
   font-size: 1.5em;
+}
+
+.logo-nav {
+  width: 70%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(128, 128, 201);
+  border-right: 1px solid #e7e7e7;
+  shadow: 0 0 10px rgba(0, 0, 0, 0.75);
 }
