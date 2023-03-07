@@ -15,11 +15,13 @@ function MyReservations() {
   });
 
   return (
-    <div>
+    <div className=".container-fluid">
       <h1>My Reservations</h1>
-      {reservations.map((reservation) => (
-        <Reservation key={reservation.id} reservation={reservation} />
-      ))}
+      <ul className="container-xl">
+        {reservations.map((reservation) => (
+          <Reservation key={reservation.id} reservation={reservation} />
+        ))}
+      </ul>
     </div>
   );
 }
