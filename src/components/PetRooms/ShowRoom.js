@@ -15,9 +15,17 @@ function ShowRoom() {
   useEffect(() => {
     dispatch(fetchRoomId(id));
   }, [dispatch, id]);
+
+  let makeResProps = {};
+  if (!room.isLoading) {
+    makeResProps = {
+      roomId: room.id,
+    };
+  }
   const openModalMakeReservation = () => {
-    ModalService.open(MakeReservation);
+    ModalService.open(MakeReservation, makeResProps);
   };
+
   return (
     <div className="container">
       <div className="row justify-content-around">
