@@ -1,0 +1,25 @@
+#password,
+#email {
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+}
+
+#password input,
+#email input {
+  border-radius: 5px;
+  border: none;
+}
+
+#password input:hover,
+#email input:hover {
+  outline-style: inset;
+  outline-color: rgb(0, 0, 128);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50%;
+}
