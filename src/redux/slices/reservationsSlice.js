@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import fetchReservations from '../thunks/fetchReservations';
 
-const ReservationsSlice = createSlice({
-  name: 'Reservations',
+const reservationsSlice = createSlice({
+  name: 'reservations',
   initialState: {
     data: [],
     isLoading: false,
@@ -22,5 +22,5 @@ const ReservationsSlice = createSlice({
     });
   },
 });
-const ReservationsReducer = ReservationsSlice.reducer;
-export default ReservationsReducer;
+const reservationsReducer = reservationsSlice.reducer;
+export default reservationsReducer;
