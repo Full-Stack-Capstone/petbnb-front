@@ -4,12 +4,13 @@ import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
+import './MakeReservation.css';
 
 function MakeReservation({ close }) {
   // create a function to handle the click event of the button on the modal footer
   const MakeReservation = () => {
     // here is where we would dispatch an action to post to the API
-    console.log('MakeReservation button clicked');
+
   };
 
   return (
