@@ -1,55 +1,68 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import SideNav, {
+  Toggle,
+  Nav,
+  NavItem,
+  NavIcon,
+  NavText,
+} from '@trendmicro/react-sidenav';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './NavBar.css';
-import logo from '../../img/logo-no-background.png';
+import {
+  FaCalendarCheck,
+  FaDog,
+  FaHome,
+  FaHotel,
+  FaHouseUser,
+} from 'react-icons/fa';
 
 function NavBar() {
+  const navigate = useNavigate();
   return (
-    <Navbar bg="light" expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="/" className="navbar-brand">
-          <div className="logo-container">
-            <img src={logo} alt="Logo" className="logo-dog" />
-          </div>
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Rooms</Nav.Link>
-            <Nav.Link href="#action2">Pets</Nav.Link>
-            <Nav.Link href="#action2">Reservations</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <SideNav
+      onSelect={(selected) => {
+        if (selected === 'home') {
+          navigate('/');
+        } else {
+          navigate(`/${selected}`);
+        }
+      }}
+    >
+      <SideNav.Toggle />
+      <SideNav.Nav defaultSelected="home">
+        <NavItem eventKey="home">
+          <NavIcon>
+            <FaHome className="icon-nav" />
+          </NavIcon>
+          <NavText>Home</NavText>
+        </NavItem>
+        <NavItem eventKey="my-pets">
+          <NavIcon>
+            <FaDog className="icon-nav" />
+          </NavIcon>
+          <NavText>My pets</NavText>
+        </NavItem>
+        <NavItem eventKey="my-rooms">
+          <NavIcon>
+            <FaHotel className="icon-nav" />
+          </NavIcon>
+          <NavText>My Rooms</NavText>
+        </NavItem>
+        <NavItem eventKey="my-reservations">
+          <NavIcon>
+            <FaCalendarCheck className="icon-nav" />
+          </NavIcon>
+          <NavText>My Reservations</NavText>
+        </NavItem>
+        <NavItem eventKey="all-rooms">
+          <NavIcon>
+            <FaHouseUser className="icon-nav" />
+          </NavIcon>
+          <NavText>Book a room</NavText>
+        </NavItem>
+      </SideNav.Nav>
+    </SideNav>
   );
 }
 
