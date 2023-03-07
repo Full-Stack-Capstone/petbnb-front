@@ -1,10 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-export const fetchRooms = createAsyncThunk('fetchRooms', async () => {
-  const response = await axios.get('http://127.0.0.1:3001');
-  return response.data;
-});
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchRooms } from '../thunks/fetchRooms';
 
 const petRoomsSlice = createSlice({
   name: 'petRooms',
@@ -27,5 +22,5 @@ const petRoomsSlice = createSlice({
     });
   },
 });
-
-export const petRoomsReducer = petRoomsSlice.reducer;
+const petRoomsReducer = petRoomsSlice.reducer;
+export default petRoomsReducer;
