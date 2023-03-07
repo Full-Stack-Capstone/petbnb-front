@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import fetchReservations from '../thunks/fetchReservations';
+import { fetchReservations } from '../thunks/reservationsThunks';
 
 const reservationsSlice = createSlice({
   name: 'reservations',
