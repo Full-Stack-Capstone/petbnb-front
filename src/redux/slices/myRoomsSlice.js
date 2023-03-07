@@ -1,29 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// export const fetchRooms = createAsyncThunk('fetchRooms', async () => {
-//   const res = await axios.get('http://127.0.0.1:3001/current_user',{
-//     headers:{
-//       "Content-Type": "application/json",
-//       Authorization: localStorage.getItem("token"),
-//     }
-//   }).then(async (res) =>{
-//     const response = await axios.get(`http://127.0.0.1:3001/pet_rooms`,{
-//       headers:{
-//         "Content-Type": "application/json",
-//         Authorization: localStorage.getItem("token"),
-//       }
-//     });
-//     console.log(response.data);
-//     return res.data
-//   });
-// });
 export const fetchRooms = createAsyncThunk('fetchRooms', async () => {
-  const res = await axios.get('http://127.0.0.1:3001/pet_rooms',{
-    headers:{
-      "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
-    }
+  const res = await axios.get('http://127.0.0.1:3001/pet_rooms', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: localStorage.getItem('token'),
+    },
   });
   console.log(res.data);
   return res.data;
