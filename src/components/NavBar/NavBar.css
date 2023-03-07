@@ -1,0 +1,40 @@
+/* * {
+  border: 1px solid red;
+} */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.icon-nav {
+  font-size: 1.5em;
+}
+
+.logo-nav {
+  width: 70%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(128, 128, 201);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
+  position: fixed;
+}
+
+.ontoggle-open {
+  margin-left: 240px;
+  filter: blur(3px) opacity(40%);
+}
+
+@media screen and (max-width: 768px) {
+  .ontoggle-close {
+    margin-left: 54px;
+  }
+}
