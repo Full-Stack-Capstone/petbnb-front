@@ -23,13 +23,13 @@ function NavBar() {
 
   const handleToggleClick = () => {
     setIsOpen(!isOpen);
-    const sideNav = document.querySelector('.nav-contain');
+    const main = document.querySelector('.ontoggle');
     if (isOpen) {
-      sideNav.classList.remove('nav-contain-open');
-      console.log('close');
+      main.classList.remove('ontoggle-open');
+      main.classList.add('ontoggle-close');
     } else {
-      sideNav.classList.add('nav-contain-open');
-      console.log('open');
+      main.classList.add('ontoggle-open');
+      main.classList.remove('ontoggle-close');
     }
   };
 
@@ -44,7 +44,6 @@ function NavBar() {
           }
         }}
         className="side-nav"
-        isOpen={isOpen}
         onToggle={handleToggleClick}
       >
         <img src={logo} alt="logo" className="logo-nav" />

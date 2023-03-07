@@ -27,3 +27,14 @@ img {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.75);
   position: fixed;
 }
+
+.ontoggle-open {
+  margin-left: 240px;
+  filter: blur(3px) opacity(40%);
+}
+
+@media screen and (max-width: 768px) {
+  .ontoggle-close {
+    margin-left: 54px;
+  }
+}
