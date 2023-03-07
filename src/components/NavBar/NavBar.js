@@ -16,10 +16,6 @@ import logo from '../../images/logo-no-background.png';
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  // const onOpenSideBar = () => {
-  //   const sideNav = document.querySelector('.side-nav');
-  //   sideNav.classList.add('side-nav-open');
-  // };
 
   const handleToggleClick = () => {
     setIsOpen(!isOpen);
