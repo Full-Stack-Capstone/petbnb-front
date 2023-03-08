@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchRooms } from '../../redux/thunks/fetchRooms';
 import './home.css';
 import RoomFilters from './Filter';
@@ -13,6 +12,8 @@ function Home() {
 
   const [typeOfPetFilter, setTypeOfPetFilter] = useState('');
   const [sizeOfPetFilter, setSizeOfPetFilter] = useState('');
+
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     dispatch(fetchRooms());
@@ -31,7 +32,10 @@ function Home() {
     );
   }
 
-  let renderedRooms = [];
+  const handleSearch = (event) => {
+    setSearchText(event.target.value);
+  };
+
   if (Array.isArray(rooms)) {
     filteredRooms = filteredRooms.filter(
       (room) => room.name.toLowerCase().includes(searchText.toLowerCase()),
@@ -45,7 +49,10 @@ function Home() {
         sizeOfPetFilter={sizeOfPetFilter}
         setSizeOfPetFilter={setSizeOfPetFilter}
       />
-      <div className="row justify-content-around">{renderedRooms}</div>
+      <SearchBar onChange={handleSearch} />
+      <div className="row justify-content-around">
+        <RenderedRooms rooms={filteredRooms} />
+      </div>
     </div>
   );
 }
