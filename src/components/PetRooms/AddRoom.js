@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
+import addRoomThunk from '../../redux/thunks/addRoomThunk';
 
 function AddRoom({ close }) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [typeOfPet, setTypeOfPet] = useState([]);
   const [maxSize, setMaxSize] = useState('');
-  // const dispatch = useDispatch();
+  const [image, setImage] = useState(null);
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('price', price);
+    formData.append('type_of_pet', typeOfPet);
+    formData.append('max_size_accepted', maxSize);
+    formData.append('image', image )
 
-    const roomInfo = {
-      pet_room: {
-        name,
-        price,
-        type_of_pet: typeOfPet,
-        max_size_accepted: maxSize,
-      },
-    };
-    console.log(roomInfo);
-    // dispatch(loginUser(roomInfo));
+    // for (var pair of formData.entries()) {
+    //   console.log(pair[0] + ', ' + pair[1])
+    // }
+    dispatch(addRoomThunk(formData));
   };
 
   const checkBoxChange = (e) => {
@@ -34,6 +37,11 @@ function AddRoom({ close }) {
     } else {
       setTypeOfPet(typeOfPet.filter((e) => e !== value));
     }
+  };
+
+  const onImageChange = (e) => {
+    console.log(e.target.files);
+    setImage({image: e.target.files[0]});
   };
 
   return (
@@ -69,6 +77,9 @@ function AddRoom({ close }) {
           Medium
           <input type="radio" value="large" name="max_size_accepted" className="ms-2" />
           Large
+        </div>
+        <div>
+          <input type="file" name="image" onChange={onImageChange}  />
         </div>
       </ModalBody>
       <ModalFooter buttonName="Add room" buttonFunc={handleSubmit} />

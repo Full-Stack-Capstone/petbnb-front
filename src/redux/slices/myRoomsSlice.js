@@ -8,7 +8,6 @@ export const fetchRooms = createAsyncThunk('fetchRooms', async () => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  console.log(res.data);
   return res.data;
 });
 

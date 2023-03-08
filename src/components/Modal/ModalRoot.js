@@ -2,7 +2,7 @@
 /* eslint-disable react/forbid-prop-types */
 
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ModalService from './ModalService';
 import './ModalRoot.css';
 
@@ -38,8 +38,8 @@ export default function ModalRoot() {
   );
 }
 
-ModalRoot.propTypes = {
-  component: PropTypes.func.isRequired,
-  props: PropTypes.object.isRequired,
-  close: PropTypes.func.isRequired,
-};
+// ModalRoot.propTypes = {
+//   component: PropTypes.func.isRequired,
+//   props: PropTypes.object.isRequired,
+//   close: PropTypes.func.isRequired,
+// };

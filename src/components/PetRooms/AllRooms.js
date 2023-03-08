@@ -3,7 +3,7 @@ import React from 'react';
 function AllRooms() {
   return (
     <div>
-      <h1>AllRooms</h1>
+      <h1>Same code as Home?</h1>
     </div>
   );
 }
