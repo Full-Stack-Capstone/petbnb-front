@@ -1,25 +1,70 @@
+/* * {
+  border: 1px solid red;
+} */
+
+h1 {
+  color: rgb(57, 100, 137);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(13, 41, 132);
+}
 #password,
-#email {
+#email,
+#name {
   display: flex;
   flex-direction: column;
   max-width: 200px;
 }
 
 #password input,
-#email input {
+#email input,
+#name input {
   border-radius: 5px;
   border: none;
 }
 
 #password input:hover,
-#email input:hover {
+#email input:hover,
+#name input:hover {
   outline-style: inset;
   outline-color: rgb(0, 0, 128);
 }
 
-form {
+#name input {
+  background-color: rgb(222, 236, 255);
+}
+
+.form-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 50%;
+  max-width: 100%;
+  border-right: 1px solid rgb(13, 41, 132);
+  padding-right: 15%;
+}
+
+.new-user {
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .login-form {
+    border-right: none;
+  }
+}
+
+label {
+  color: rgb(13, 41, 132);
+  font-size: 18px;
 }

@@ -21,10 +21,9 @@ function LoginForm() {
   };
 
   return (
-    <div className="login-form">
-      <h1>Login To Your Account</h1>
-
-      <form onSubmit={handleSubmit}>
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h1>Login</h1>
         <label htmlFor="email" id="email">
           Email
           <input
@@ -45,6 +44,10 @@ function LoginForm() {
         <br />
         <button type="submit">Login</button>
       </form>
+      <div className="new-user">
+        <p>Don&apos;t have an account?</p>
+        <a href="/signup">Sign Up</a>
+      </div>
     </div>
   );
 }
