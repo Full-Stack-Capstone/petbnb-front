@@ -17,3 +17,8 @@ export const fetchPet = createAsyncThunk('fetchPet', async (petId) => {
   const response = await axios.get(`http://127.0.0.1:3001/pets/${petId}`, headers);
   return response.data;
 });
+
+export const createPet = createAsyncThunk('createPet', async (body) => {
+  const response = await axios.post('http://127.0.0.1:3001/pets/', body, headers);
+  return response.data;
+});

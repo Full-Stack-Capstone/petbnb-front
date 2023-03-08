@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import fetchPetRoom from '../../redux/thunks/fetchPetRoom';
 import { fetchPet } from '../../redux/thunks/petThunks';
-import fetchUser from '../../redux/thunks/fetchUser';
+import { fetchUser } from '../../redux/thunks/userThunks';
 import './Reservation.css';
 
 function Reservation({ reservation }) {
