@@ -15,11 +15,20 @@ function ShowRoom() {
   useEffect(() => {
     dispatch(fetchRoomId(id));
   }, [dispatch, id]);
+
+  let makeResProps = {};
+  if (!room.isLoading) {
+    makeResProps = {
+      roomId: room.id,
+    };
+  }
   const openModalMakeReservation = () => {
-    ModalService.open(MakeReservation);
+    ModalService.open(MakeReservation, makeResProps);
   };
+
   return (
     <div className="container">
+      <div id="liveAlertPlaceholder" />
       <div className="row justify-content-around">
         <HomeCarousel />
         <div key={room.id} to={`pet_room/${room.id}`} className="col-sm-3 border m-1">
