@@ -19,6 +19,7 @@ const signUpUser = createAsyncThunk('signup', async (credentials) => {
       localStorage.setItem('token', res.headers.get('Authorization'));
       return res.json();
     }
+    console.log(res);
     throw new Error(res);
   });
 });
