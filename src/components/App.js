@@ -9,6 +9,7 @@ import MyRooms from './PetRooms/MyRooms';
 import MyPets from './Pets/MyPets';
 import MyReservations from './Reservations/MyReservations';
 import ShowRoom from './PetRooms/ShowRoom';
+import EditUser from './Extra/EditUser';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginForm />} />
         <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/edit-my-info" element={<EditUser />} />
         <Route path="/all-rooms" element={<AllRooms />} />
         <Route path="/pet_room/:id" element={<ShowRoom />} />
         <Route path="/my-rooms" element={<MyRooms />} />
