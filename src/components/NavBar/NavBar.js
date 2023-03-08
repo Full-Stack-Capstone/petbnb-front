@@ -59,7 +59,7 @@ function NavBar() {
         <img src={logo} alt="logo" className="logo-nav" />
         <SideNav.Toggle onClick={handleToggleClick} />
         <SideNav.Nav defaultSelected="home">
-          {status && (
+          {!status && (
             <NavItem eventKey="login">
               <NavIcon>
                 <FaSignInAlt className="icon-nav" />
@@ -67,7 +67,7 @@ function NavBar() {
               <NavText>Login</NavText>
             </NavItem>
           )}
-          {status && (
+          {!status && (
             <NavItem eventKey="signup">
               <NavIcon>
                 <FaArrowRight className="icon-nav" />
@@ -81,7 +81,7 @@ function NavBar() {
             </NavIcon>
             <NavText>Home</NavText>
           </NavItem>
-          {!status && (
+          {status && (
             <NavItem eventKey="my-pets">
               <NavIcon>
                 <FaDog className="icon-nav" />
@@ -95,7 +95,7 @@ function NavBar() {
             </NavIcon>
             <NavText>Book a room</NavText>
           </NavItem>
-          {!status && (
+          {status && (
             <NavItem eventKey="manage">
               <NavIcon>
                 <FaList className="icon-nav" />

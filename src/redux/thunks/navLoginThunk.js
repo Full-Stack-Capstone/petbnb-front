@@ -30,6 +30,8 @@ const checkLoginStatus = createAsyncThunk('CheckLoginStatus', async () => {
   );
   if (response.status === 200) {
     status = true;
+  } else {
+    status = false;
   }
   return status;
 });
