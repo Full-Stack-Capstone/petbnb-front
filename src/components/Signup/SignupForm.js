@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import signUpUser from '../../redux/thunks/signUpThunk';
+import '../Login/LoginForm.css';
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -25,28 +26,43 @@ function SignUpForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <br />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <br />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <br />
-      <button type="submit">Login</button>
-    </form>
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h1>Create your account</h1>
+        <label htmlFor="name" id="name">
+          Name
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label htmlFor="email" id="email">
+          Email
+          <br />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <br />
+        <label htmlFor="password" id="password">
+          Password
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <br />
+        <button type="submit">Sign up</button>
+      </form>
+      <div className="new-user">
+        <p>Already have an account?</p>
+        <a href="/signup">Sign in</a>
+      </div>
+    </div>
   );
 }
 
