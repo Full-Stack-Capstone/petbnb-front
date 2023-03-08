@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import CalculateRating from '../../utils/CalculateRating';
 import petroomImage from '../../images/petroom.jpg';
 
@@ -34,5 +34,9 @@ function RenderedRooms({ rooms }) {
     </div>
   );
 }
+
+RenderedRooms.propTypes = {
+  rooms: PropTypes.isRequired,
+};
 
 export default RenderedRooms;
