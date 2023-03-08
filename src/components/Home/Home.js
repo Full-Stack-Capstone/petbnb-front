@@ -41,7 +41,6 @@ function Home() {
       (room) => room.name.toLowerCase().includes(searchText.toLowerCase()),
     );
   }
-
   return (
     <div className="container-fluid">
       <RoomFilters
