@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import fetchPetRoom from '../../redux/thunks/fetchPetRoom';
-import fetchPet from '../../redux/thunks/fetchPet';
+import { fetchPet } from '../../redux/thunks/petThunks';
 import fetchUser from '../../redux/thunks/fetchUser';
 import './Reservation.css';
 
@@ -15,17 +15,20 @@ function Reservation({ reservation }) {
 
   useEffect(() => {
     dispatch(fetchPet(reservation.pet_id));
-  }, [dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     dispatch(fetchPetRoom(reservation.pet_room_id));
-  }, [dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!petRoom.isLoading) {
       dispatch(fetchUser(petRoom.user_id));
     }
-  }, [dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <li className="card mb-3 text-start" style={{ 'max-width': '400px' }}>

@@ -28,6 +28,7 @@ function ShowRoom() {
 
   return (
     <div className="container">
+      <div id="liveAlertPlaceholder" />
       <div className="row justify-content-around">
         <HomeCarousel />
         <div key={room.id} to={`pet_room/${room.id}`} className="col-sm-3 border m-1">

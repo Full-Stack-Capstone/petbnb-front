@@ -1,6 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { fetchPets } from '../../redux/thunks/petThunks';
 import { createReservation } from '../../redux/thunks/reservationsThunks';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
@@ -11,23 +12,42 @@ import './MakeReservation.css';
 function MakeReservation(props) {
   const dispatch = useDispatch();
   const { close, roomId } = props;
+  const petsState = useSelector((state) => state.pets);
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+  // get all pets of the current user
+  useEffect(() => {
+    dispatch(fetchPets());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // create a function to handle the response message
-  const responseMessage = (response) => {
-    const message = document.getElementById('message');
-    message.innerHTML = response;
+  const responseMessage = (message, status) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+      `<div class="alert alert-${status} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>',
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
   };
 
   // create a function to handle the click event of the button on the modal footer
-  const MakeReservation = () => {
+  const CreateReservation = () => {
     const requestBody = {
+      pet_room_id: roomId,
       start_date: document.getElementById('start_date').value,
       end_date: document.getElementById('end_date').value,
-      pet_room_id: roomId,
-      pet_id: 1,
+      pet_id: document.getElementById('pet_id').value,
     };
-    dispatch(createReservation(requestBody)).then(() => {
-      responseMessage();
+    dispatch(createReservation(requestBody)).then((response) => {
+      if (response.error) {
+        responseMessage(response.error.message, 'danger');
+      } else {
+        responseMessage('Pet room reserved succesfully', 'success');
+      }
       close();
     });
   };
@@ -41,8 +61,16 @@ function MakeReservation(props) {
         <input id="start_date" type="date" />
         <p>Pick-up</p>
         <input id="end_date" type="date" />
+        <p>Select your pet:</p>
+        <select id="pet_id">
+          {petsState.data.map((pet) => (
+            <option key={pet.id} value={pet.id}>
+              {pet.name}
+            </option>
+          ))}
+        </select>
       </ModalBody>
-      <ModalFooter buttonName="Reserve" buttonFunc={MakeReservation} />
+      <ModalFooter buttonName="Reserve" buttonFunc={CreateReservation} />
     </Modal>
   );
 }

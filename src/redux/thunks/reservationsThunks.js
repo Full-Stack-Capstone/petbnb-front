@@ -15,6 +15,6 @@ export const fetchReservations = createAsyncThunk('fetchReservations', async () 
 });
 
 export const createReservation = createAsyncThunk('createReservations', async (body) => {
-  const response = await axios.post(url, headers, body);
+  const response = await axios.post(url, body, headers);
   return response.data;
 });
