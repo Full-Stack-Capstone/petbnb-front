@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './NavBar.css';
@@ -11,9 +12,16 @@ import {
   FaHouseUser,
   FaHotel,
 } from 'react-icons/fa';
+import checkLoginStatus from '../../redux/thunks/navLoginThunk';
 import logo from '../../images/logo-no-background.png';
 
 function NavBar() {
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.checkStatus.data);
+  console.log(status);
+  useEffect(() => {
+    dispatch(checkLoginStatus());
+  }, []);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   // const onOpenSideBar = () => {
@@ -50,9 +58,7 @@ function NavBar() {
         <SideNav.Toggle onClick={handleToggleClick} />
         <SideNav.Nav defaultSelected="home">
           <NavItem eventKey="home">
-            <NavIcon>
-              <FaHome className="icon-nav" />
-            </NavIcon>
+            <NavIcon>{!status && <FaHome className="icon-nav" />}</NavIcon>
             <NavText>Home</NavText>
           </NavItem>
           <NavItem eventKey="my-pets">
