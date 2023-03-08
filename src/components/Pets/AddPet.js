@@ -106,9 +106,7 @@ function AddPet(props) {
           <input id="extra-information" type="text" />
 
           {/* upload image */}
-          {/* <input id="image" type="file" accept="image/*" />
-          <br />
-          <button type="submit">Update</button> */}
+          {/* <input id="image" type="file" accept="image/*" /> */}
         </form>
       </ModalBody>
       <ModalFooter buttonName="AddPet" buttonFunc={handleSubmit} />
