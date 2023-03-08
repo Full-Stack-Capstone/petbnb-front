@@ -12,18 +12,20 @@ import ShowRoom from './PetRooms/ShowRoom';
 
 function App() {
   return (
-    <div className="app">
+    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignUpForm />} />
-        <Route path="/all-rooms" element={<AllRooms />} />
-        <Route path="/pet_room/:id" element={<ShowRoom />} />
-        <Route path="/my-rooms" element={<MyRooms />} />
-        <Route path="/my-pets" element={<MyPets />} />
-        <Route path="/my-reservations" element={<MyReservations />} />
-      </Routes>
+      <div className="ontoggle">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/signup" element={<SignUpForm />} />
+          <Route path="/all-rooms" element={<AllRooms />} />
+          <Route path="/pet_room/:id" element={<ShowRoom />} />
+          <Route path="/my-rooms" element={<MyRooms />} />
+          <Route path="/my-pets" element={<MyPets />} />
+          <Route path="/my-reservations" element={<MyReservations />} />
+        </Routes>
+      </div>
     </div>
   );
 }
