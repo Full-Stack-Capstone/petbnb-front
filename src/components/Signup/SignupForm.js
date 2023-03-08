@@ -60,7 +60,7 @@ function SignUpForm() {
       </form>
       <div className="new-user">
         <p>Already have an account?</p>
-        <a href="/signup">Sign in</a>
+        <a href="/login">Sign in</a>
       </div>
     </div>
   );
