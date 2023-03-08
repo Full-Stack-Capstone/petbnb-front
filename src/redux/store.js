@@ -6,6 +6,7 @@ import petRoomReducer from './slices/petRoomSlice';
 import userReducer from './slices/userSlice';
 import reservationsReducer from './slices/reservationsSlice';
 import createReservationReducer from './slices/createReservationSlice';
+import usersReducer from './slices/usersSlice';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     petRoom: petRoomReducer,
     reservations: reservationsReducer,
     user: userReducer,
+    users: usersReducer,
   },
 });
 

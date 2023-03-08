@@ -6,17 +6,24 @@ import './home.css';
 import RoomFilters from './Filter';
 import CalculateRating from '../../utils/CalculateRating';
 import petroomImage from '../../images/petroom.jpg';
+import { fetchUsers } from '../../redux/thunks/fetchUser';
 
 function Home() {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.petRooms.data);
-
+  const users = useSelector((state) => state.users.data);
   const [typeOfPetFilter, setTypeOfPetFilter] = useState('');
   const [sizeOfPetFilter, setSizeOfPetFilter] = useState('');
 
   useEffect(() => {
     dispatch(fetchRooms());
+    dispatch(fetchUsers());
   }, [dispatch]);
+
+  const hash = {};
+
+  // users.map((user) => hash[user.id] = user.name);
+  users.map((user) => Object.assign(hash, { [user.id]: user.name }));
 
   let filteredRooms = rooms;
   if (typeOfPetFilter) {
@@ -43,7 +50,8 @@ function Home() {
           <h2>{room.name}</h2>
           <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
           <p>{`Max sized accepted: ${room.max_size_accepted}`}</p>
-          <p>{`User Owner: ${room.user_id}`}</p>
+          <p>{`User Owner Id: ${room.user_id}`}</p>
+          <p>{`User Owner Name: ${hash[room.user_id]}`}</p>
           <p>{`Rating: ${CalculateRating(room.rating)}`}</p>
           <p>{`Price: ${room.price}`}</p>
         </div>
