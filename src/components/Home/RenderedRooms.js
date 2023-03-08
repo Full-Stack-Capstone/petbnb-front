@@ -36,7 +36,7 @@ function RenderedRooms({ rooms }) {
 }
 
 RenderedRooms.propTypes = {
-  rooms: PropTypes.isRequired,
+  rooms: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default RenderedRooms;
