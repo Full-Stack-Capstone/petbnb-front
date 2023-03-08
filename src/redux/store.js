@@ -9,7 +9,6 @@ import reservationsReducer from './slices/reservationsSlice';
 import createReservationReducer from './slices/createReservationSlice';
 import usersReducer from './slices/usersSlice';
 
-
 const store = configureStore({
   reducer: {
     createReservation: createReservationReducer,
