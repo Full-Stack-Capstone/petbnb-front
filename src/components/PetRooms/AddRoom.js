@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
-import addRoomThunk from '../../redux/thunks/addRoomThunk';
+// import addRoomThunk from '../../redux/thunks/addRoomThunk';
 
 function AddRoom({ close }) {
   const [name, setName] = useState('');
@@ -13,7 +13,7 @@ function AddRoom({ close }) {
   const [typeOfPet, setTypeOfPet] = useState([]);
   const [maxSize, setMaxSize] = useState('');
   const [image, setImage] = useState(null);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,12 +22,11 @@ function AddRoom({ close }) {
     formData.append('price', price);
     formData.append('type_of_pet', typeOfPet);
     formData.append('max_size_accepted', maxSize);
-    formData.append('image', image )
-
+    formData.append('image', image);
     // for (var pair of formData.entries()) {
     //   console.log(pair[0] + ', ' + pair[1])
     // }
-    dispatch(addRoomThunk(formData));
+    // dispatch(addRoomThunk(formData));
   };
 
   const checkBoxChange = (e) => {
@@ -41,7 +40,7 @@ function AddRoom({ close }) {
 
   const onImageChange = (e) => {
     console.log(e.target.files);
-    setImage({image: e.target.files[0]});
+    setImage({ image: e.target.files[0] });
   };
 
   return (
@@ -56,30 +55,31 @@ function AddRoom({ close }) {
         />
         <p className="mb-1">Price:</p>
         <input
+          className="mb-2"
           type="number"
           step="5"
           min="0"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-        <p className="mb-1">Type of pet:</p>
+        <p className="m-0">Type of pet:</p>
         <div onChange={checkBoxChange}>
           <input type="checkbox" value="dog" name="typeOfPet" />
           Dog
-          <input type="checkbox" value="cat" name="typeOfPet" className="ms-2" />
+          <input type="checkbox" value="cat" name="typeOfPet" className="ms-2 mb-2" />
           Cat
         </div>
-        <p className="mb-1">Max pet size accepted:</p>
-        <div onChange={(e) => setMaxSize(e.target.value)}>
+        <p className="mb-0">Max pet size accepted:</p>
+        <div className="mb-2" onChange={(e) => setMaxSize(e.target.value)}>
           <input type="radio" value="small" name="max_size_accepted" />
           Small
-          <input type="radio" value="medium" name="max_size_accepted" />
+          <input className="ms-2" type="radio" value="medium" name="max_size_accepted" />
           Medium
           <input type="radio" value="large" name="max_size_accepted" className="ms-2" />
           Large
         </div>
         <div>
-          <input type="file" name="image" onChange={onImageChange}  />
+          <input type="file" name="image" onChange={onImageChange} />
         </div>
       </ModalBody>
       <ModalFooter buttonName="Add room" buttonFunc={handleSubmit} />

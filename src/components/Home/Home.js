@@ -36,7 +36,7 @@ function Home() {
           <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
           <p>{`Max sized accepted: ${room.max_size_accepted}`}</p>
           <p>{`User Owner: ${room.user_id}`}</p>
-          {/* <p>{`Rating: ${CalculateRating(room.rating)}`}</p> */}
+          <p>{`Rating: ${CalculateRating(room.rating)}`}</p>
           <p>{`Price: ${room.price}`}</p>
         </div>
         <div className="w-50">
