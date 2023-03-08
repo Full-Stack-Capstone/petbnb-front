@@ -11,6 +11,8 @@ import {
   FaList,
   FaHouseUser,
   FaHotel,
+  FaArrowRight,
+  FaSignInAlt,
 } from 'react-icons/fa';
 import checkLoginStatus from '../../redux/thunks/navLoginThunk';
 import logo from '../../images/logo-no-background.png';
@@ -57,40 +59,62 @@ function NavBar() {
         <img src={logo} alt="logo" className="logo-nav" />
         <SideNav.Toggle onClick={handleToggleClick} />
         <SideNav.Nav defaultSelected="home">
+          {status && (
+            <NavItem eventKey="login">
+              <NavIcon>
+                <FaSignInAlt className="icon-nav" />
+              </NavIcon>
+              <NavText>Login</NavText>
+            </NavItem>
+          )}
+          {status && (
+            <NavItem eventKey="signup">
+              <NavIcon>
+                <FaArrowRight className="icon-nav" />
+              </NavIcon>
+              <NavText>Sign up</NavText>
+            </NavItem>
+          )}
           <NavItem eventKey="home">
-            <NavIcon>{!status && <FaHome className="icon-nav" />}</NavIcon>
+            <NavIcon>
+              <FaHome className="icon-nav" />
+            </NavIcon>
             <NavText>Home</NavText>
           </NavItem>
-          <NavItem eventKey="my-pets">
-            <NavIcon>
-              <FaDog className="icon-nav" />
-            </NavIcon>
-            <NavText>My pets</NavText>
-          </NavItem>
+          {!status && (
+            <NavItem eventKey="my-pets">
+              <NavIcon>
+                <FaDog className="icon-nav" />
+              </NavIcon>
+              <NavText>My pets</NavText>
+            </NavItem>
+          )}
           <NavItem eventKey="all-rooms">
             <NavIcon>
               <FaHouseUser className="icon-nav" />
             </NavIcon>
             <NavText>Book a room</NavText>
           </NavItem>
-          <NavItem eventKey="manage">
-            <NavIcon>
-              <FaList className="icon-nav" />
-            </NavIcon>
-            <NavText>Manage</NavText>
-            <NavItem eventKey="my-rooms">
+          {!status && (
+            <NavItem eventKey="manage">
               <NavIcon>
-                <FaHotel className="icon-nav" />
+                <FaList className="icon-nav" />
               </NavIcon>
-              <NavText>My Rooms</NavText>
+              <NavText>Manage</NavText>
+              <NavItem eventKey="my-rooms">
+                <NavIcon>
+                  <FaHotel className="icon-nav" />
+                </NavIcon>
+                <NavText>My Rooms</NavText>
+              </NavItem>
+              <NavItem eventKey="my-reservations">
+                <NavIcon>
+                  <FaCalendarCheck className="icon-nav" />
+                </NavIcon>
+                <NavText>My Reservations</NavText>
+              </NavItem>
             </NavItem>
-            <NavItem eventKey="my-reservations">
-              <NavIcon>
-                <FaCalendarCheck className="icon-nav" />
-              </NavIcon>
-              <NavText>My Reservations</NavText>
-            </NavItem>
-          </NavItem>
+          )}
         </SideNav.Nav>
       </SideNav>
     </div>
