@@ -28,11 +28,10 @@ function RenderedRooms({ rooms }) {
         <div className="w-50">
           <h2>{room.name}</h2>
           <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
-          <p>{`Max sized accepted: ${room.max_size_accepted}`}</p>
-          <p>{`User Owner Id: ${room.user_id}`}</p>
-          <p>{`User Owner Name: ${hash[room.user_id]}`}</p>
+          <p>{`Max size accepted: ${room.max_size_accepted}`}</p>
+          <p>{`Owner Name: ${hash[room.user_id]}`}</p>
           <p>{`Rating: ${CalculateRating(room.rating)}`}</p>
-          <p>{`Price: ${room.price}`}</p>
+          <p>{`Price: $${room.price}`}</p>
         </div>
         <div className="w-50">
           <img src={petroomImage} alt="room-img" className="img-fluid" />
