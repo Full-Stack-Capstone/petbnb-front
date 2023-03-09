@@ -7,6 +7,8 @@ import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
+import ModalService from '../Modal/ModalService';
+import AddPet from '../Pets/AddPet';
 import './MakeReservation.css';
 
 function MakeReservation(props) {
@@ -52,6 +54,10 @@ function MakeReservation(props) {
     });
   };
 
+  const openModalAddPet = () => {
+    ModalService.open(AddPet);
+  };
+
   return (
     <Modal>
       <ModalHeader title="Room: My Awesome Room Title" close={close} />
@@ -69,6 +75,7 @@ function MakeReservation(props) {
             </option>
           ))}
         </select>
+        <button onClick={openModalAddPet} type="button" className="btn btn-primary m-4">New Pet</button>
       </ModalBody>
       <ModalFooter buttonName="Reserve" buttonFunc={CreateReservation} />
     </Modal>

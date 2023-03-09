@@ -39,7 +39,6 @@ function AddRoom({ close }) {
   };
 
   const onImageChange = (e) => {
-    console.log(e.target.files);
     setImage({ image: e.target.files[0] });
   };
 
