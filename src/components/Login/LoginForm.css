@@ -10,12 +10,17 @@ a {
   text-decoration: none;
   color: rgb(13, 41, 132);
 }
+
 #password,
 #email,
 #name {
   display: flex;
   flex-direction: column;
   max-width: 200px;
+}
+
+#name input {
+  background-color: rgb(222, 236, 255);
 }
 
 #password input,
@@ -30,10 +35,6 @@ a {
 #name input:hover {
   outline-style: inset;
   outline-color: rgb(0, 0, 128);
-}
-
-#name input {
-  background-color: rgb(222, 236, 255);
 }
 
 .form-container {
