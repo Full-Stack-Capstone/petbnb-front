@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import loginUser from '../../redux/thunks/loginThunk';
 import './LoginForm.css';
 
@@ -7,6 +8,7 @@ function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ function LoginForm() {
       },
     };
     dispatch(loginUser(credentials));
+    navigate('/');
   };
 
   return (
