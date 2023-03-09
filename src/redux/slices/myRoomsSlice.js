@@ -8,7 +8,7 @@ export const fetchRooms = createAsyncThunk('fetchRooms', async () => {
       Authorization: localStorage.getItem('token'),
     },
   });
-  return res.data;
+  return res.data.data;
 });
 
 const myRoomsSlice = createSlice({

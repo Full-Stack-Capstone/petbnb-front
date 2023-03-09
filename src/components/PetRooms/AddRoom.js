@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
-// import addRoomThunk from '../../redux/thunks/addRoomThunk';
+import addRoomThunk from '../../redux/thunks/addRoomThunk';
 
 function AddRoom({ close }) {
   const [name, setName] = useState('');
@@ -13,20 +13,18 @@ function AddRoom({ close }) {
   const [typeOfPet, setTypeOfPet] = useState([]);
   const [maxSize, setMaxSize] = useState('');
   const [image, setImage] = useState(null);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', name);
-    formData.append('price', price);
-    formData.append('type_of_pet', typeOfPet);
-    formData.append('max_size_accepted', maxSize);
-    formData.append('image', image);
-    // for (var pair of formData.entries()) {
-    //   console.log(pair[0] + ', ' + pair[1])
-    // }
-    // dispatch(addRoomThunk(formData));
+    formData.append('pet_room[name]', name);
+    formData.append('pet_room[price]', price);
+    formData.append('pet_room[type_of_pet]', typeOfPet);
+    formData.append('pet_room[max_size_accepted]', maxSize);
+    formData.append('pet_room[image]', image);
+    dispatch(addRoomThunk(formData));
+
   };
 
   const checkBoxChange = (e) => {
@@ -36,10 +34,6 @@ function AddRoom({ close }) {
     } else {
       setTypeOfPet(typeOfPet.filter((e) => e !== value));
     }
-  };
-
-  const onImageChange = (e) => {
-    setImage({ image: e.target.files[0] });
   };
 
   return (
@@ -78,7 +72,7 @@ function AddRoom({ close }) {
           Large
         </div>
         <div>
-          <input type="file" name="image" onChange={onImageChange} />
+          <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])} />
         </div>
       </ModalBody>
       <ModalFooter buttonName="Add room" buttonFunc={handleSubmit} />
