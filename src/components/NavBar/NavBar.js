@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './NavBar.css';
@@ -13,23 +13,24 @@ import {
   FaHotel,
   FaArrowRight,
   FaSignInAlt,
+  FaSignOutAlt,
 } from 'react-icons/fa';
 import checkLoginStatus from '../../redux/thunks/navLoginThunk';
 import logo from '../../images/logo-no-background.png';
 
 function NavBar() {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.checkStatus.data);
-  console.log(status);
+  const statusLogin = localStorage.getItem('token');
   useEffect(() => {
     dispatch(checkLoginStatus());
   }, []);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-  // const onOpenSideBar = () => {
-  //   const sideNav = document.querySelector('.side-nav');
-  //   sideNav.classList.add('side-nav-open');
-  // };
+
+  const handleLogoutClick = () => {
+    localStorage.removeItem('token');
+    navigate('/');
+  };
 
   const handleToggleClick = () => {
     setIsOpen(!isOpen);
@@ -47,7 +48,11 @@ function NavBar() {
     <div className="nav-contain">
       <SideNav
         onSelect={(selected) => {
-          if (selected === 'home' || selected === 'manage') {
+          if (
+            selected === 'home' ||
+            selected === 'manage' ||
+            selected === 'logout'
+          ) {
             navigate('/');
           } else {
             navigate(`/${selected}`);
@@ -59,7 +64,7 @@ function NavBar() {
         <img src={logo} alt="logo" className="logo-nav" />
         <SideNav.Toggle onClick={handleToggleClick} />
         <SideNav.Nav defaultSelected="home">
-          {!status && (
+          {!statusLogin && (
             <NavItem eventKey="login">
               <NavIcon>
                 <FaSignInAlt className="icon-nav" />
@@ -67,7 +72,7 @@ function NavBar() {
               <NavText>Login</NavText>
             </NavItem>
           )}
-          {!status && (
+          {!statusLogin && (
             <NavItem eventKey="signup">
               <NavIcon>
                 <FaArrowRight className="icon-nav" />
@@ -81,7 +86,7 @@ function NavBar() {
             </NavIcon>
             <NavText>Home</NavText>
           </NavItem>
-          {status && (
+          {statusLogin && (
             <NavItem eventKey="my-pets">
               <NavIcon>
                 <FaDog className="icon-nav" />
@@ -95,7 +100,7 @@ function NavBar() {
             </NavIcon>
             <NavText>Book a room</NavText>
           </NavItem>
-          {status && (
+          {statusLogin && (
             <NavItem eventKey="manage">
               <NavIcon>
                 <FaList className="icon-nav" />
@@ -113,6 +118,14 @@ function NavBar() {
                 </NavIcon>
                 <NavText>My Reservations</NavText>
               </NavItem>
+            </NavItem>
+          )}
+          {statusLogin && (
+            <NavItem eventKey="logout" onClick={handleLogoutClick}>
+              <NavIcon>
+                <FaSignOutAlt className="icon-nav" />
+              </NavIcon>
+              <NavText>Logout</NavText>
             </NavItem>
           )}
         </SideNav.Nav>

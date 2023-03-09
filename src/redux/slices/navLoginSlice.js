@@ -15,13 +15,6 @@ const checkStatusSlice = createSlice({
     builder.addCase(checkLoginStatus.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;
-      console.log(
-        action.payload,
-        'action.payload',
-        state.data,
-        'state.data',
-        state,
-      );
     });
     builder.addCase(checkLoginStatus.rejected, (state, action) => {
       state.isLoading = false;
