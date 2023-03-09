@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import CalculateRating from '../../utils/CalculateRating';
 import petroomImage from '../../images/petroom.jpg';
-import { fetchUsers } from '../../redux/thunks/fetchUser';
+import { fetchUsers } from '../../redux/thunks/userThunks';
 
 function RenderedRooms({ rooms }) {
   const dispatch = useDispatch();
