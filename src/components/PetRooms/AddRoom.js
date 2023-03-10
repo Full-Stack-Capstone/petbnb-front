@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../Modal/Modal';
@@ -15,8 +15,7 @@ function AddRoom({ close }) {
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const formData = new FormData();
     formData.append('pet_room[name]', name);
     formData.append('pet_room[price]', price);
@@ -24,7 +23,6 @@ function AddRoom({ close }) {
     formData.append('pet_room[max_size_accepted]', maxSize);
     formData.append('pet_room[image]', image);
     dispatch(addRoomThunk(formData));
-
   };
 
   const checkBoxChange = (e) => {
@@ -75,7 +73,7 @@ function AddRoom({ close }) {
           <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])} />
         </div>
       </ModalBody>
-      <ModalFooter buttonName="Add room" buttonFunc={handleSubmit} />
+      <ModalFooter buttonName="Add room" buttonFunc={handleSubmit} close={close} />
     </Modal>
   );
 }
