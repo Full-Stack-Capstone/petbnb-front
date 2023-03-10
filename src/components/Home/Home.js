@@ -32,10 +32,12 @@ function AllRooms() {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  const carouselRooms = rooms.filter(
-    (room) => CalculateRating(room.attributes.rating) >= 4,
-  );
-
+  let carouselRooms = [];
+  if (Array.isArray(rooms)) {
+    carouselRooms = rooms.filter(
+      (room) => CalculateRating(room.attributes.rating) >= 4,
+    );
+  }
   let renderedRooms = [];
   if (Array.isArray(rooms)) {
     renderedRooms = carouselRooms.map((room) => (

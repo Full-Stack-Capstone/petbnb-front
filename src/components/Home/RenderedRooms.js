@@ -1,14 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import CalculateRating from '../../utils/CalculateRating';
 import { fetchUsers } from '../../redux/thunks/userThunks';
 
 function RenderedRooms({ rooms }) {
   const dispatch = useDispatch();
-
   const hash = {};
   const users = useSelector((state) => state.users.data);
 
@@ -57,9 +56,5 @@ function RenderedRooms({ rooms }) {
     </div>
   );
 }
-
-RenderedRooms.propTypes = {
-  rooms: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-};
 
 export default RenderedRooms;
