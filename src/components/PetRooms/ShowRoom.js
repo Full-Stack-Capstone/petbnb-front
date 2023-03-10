@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import { fetchRoomId } from '../../redux/thunks/fetchRooms';
 import CalculateRating from '../../utils/CalculateRating';
@@ -41,11 +42,21 @@ function ShowRoom() {
           <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
           <p>{`Max sized accepted: ${room.max_size_accepted}`}</p>
           <p>{`User Owner: ${room.user_id}`}</p>
-          <p>{`Rating: ${room.rating ? CalculateRating(room.rating) : null}`}</p>
+          <span>
+            <p>Rating:</p>
+            <ReactStars
+              count={5}
+              size={24}
+              edit={false}
+              value={room.rating ? CalculateRating(room.rating) : null}
+              activeColor="#ffd700"
+            />
+          </span>
         </div>
       </div>
       <button onClick={openModalMakeReservation} type="button" className="btn btn-primary m-4">Make Reservation</button>
       <ModalRoot />
+      <div />
     </div>
   );
 }

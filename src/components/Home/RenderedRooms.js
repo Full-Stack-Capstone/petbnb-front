@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ReactStars from 'react-rating-stars-component';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import CalculateRating from '../../utils/CalculateRating';
@@ -34,8 +35,16 @@ function RenderedRooms({ rooms }) {
             <p className="card-text">{`Type of pet living here: ${room.attributes.type_of_pet}`}</p>
             <p className="card-text">{`Max size accepted: ${room.attributes.max_size_accepted}`}</p>
             <p className="card-text">{`Owner Name: ${hash[room.attributes.user_id]}`}</p>
-            <p className="card-text">{`Rating: ${CalculateRating(room.attributes.rating)}`}</p>
             <p className="card-text">{`Price: $${room.attributes.price}`}</p>
+            <span>
+              <ReactStars
+                count={5}
+                size={24}
+                edit={false}
+                value={room.attributes.rating ? CalculateRating(room.attributes.rating) : null}
+                activeColor="#ffd700"
+              />
+            </span>
           </div>
         </div>
       </Link>
