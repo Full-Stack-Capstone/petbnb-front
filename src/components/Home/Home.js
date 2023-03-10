@@ -59,7 +59,7 @@ function AllRooms() {
   let filteredRooms = rooms;
   if (typeOfPetFilter) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.attributes.type_of_pet === typeOfPetFilter,
+      (room) => room.attributes.type_of_pet.includes(typeOfPetFilter),
     );
   }
 
