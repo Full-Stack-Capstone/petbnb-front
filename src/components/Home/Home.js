@@ -9,7 +9,6 @@ import RenderedRooms from './RenderedRooms';
 function Home() {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.petRooms.data);
-
   const [typeOfPetFilter, setTypeOfPetFilter] = useState('');
   const [sizeOfPetFilter, setSizeOfPetFilter] = useState('');
 
@@ -22,13 +21,13 @@ function Home() {
   let filteredRooms = rooms;
   if (typeOfPetFilter) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.type_of_pet === typeOfPetFilter,
+      (room) => room.attributes.type_of_pet === typeOfPetFilter,
     );
   }
 
   if (sizeOfPetFilter) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.max_size_accepted === sizeOfPetFilter,
+      (room) => room.attributes.max_size_accepted === sizeOfPetFilter,
     );
   }
 
@@ -38,7 +37,7 @@ function Home() {
 
   if (Array.isArray(rooms)) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.name.toLowerCase().includes(searchText.toLowerCase()),
+      (room) => room.attributes.name.toLowerCase().includes(searchText.toLowerCase()),
     );
   }
   return (
