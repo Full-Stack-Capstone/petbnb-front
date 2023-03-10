@@ -1,45 +1,34 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import signUpUser from '../../redux/thunks/signUpThunk';
-import '../Login/LoginForm.css';
+import { useNavigate } from 'react-router-dom';
+import loginUser from '../../redux/thunks/loginThunk';
+import './LoginForm.css';
 
-function SignUpForm() {
-  const navigate = useNavigate();
-  const [name, setName] = useState('');
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const credentials = {
       user: {
-        name,
         email,
         password,
       },
     };
-    dispatch(signUpUser(credentials));
+    dispatch(loginUser(credentials));
     navigate('/');
   };
 
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="login-form">
-        <h1>Create your account</h1>
-        <label htmlFor="name" id="name">
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
+        <h1>Login</h1>
         <label htmlFor="email" id="email">
           Email
-          <br />
           <input
             type="email"
             value={email}
@@ -56,14 +45,14 @@ function SignUpForm() {
           />
         </label>
         <br />
-        <button type="submit">Sign up</button>
+        <button type="submit">Login</button>
       </form>
       <div className="new-user">
-        <p>Already have an account?</p>
-        <a href="/login">Sign in</a>
+        <p>Don&apos;t have an account?</p>
+        <a href="/signup">Sign Up</a>
       </div>
     </div>
   );
 }
 
-export default SignUpForm;
+export default LoginForm;
