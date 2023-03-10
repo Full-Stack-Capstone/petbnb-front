@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrentUser } from '../../redux/thunks/userThunks';
@@ -12,13 +12,13 @@ function AddPet(props) {
   const { close } = props;
   const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.user.data);
+  const [typeOfPet, setTypeOfPet] = useState([]);
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
   // get current user info
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   // create a function to handle the response message
   const responseMessage = (message, status) => {
@@ -33,24 +33,30 @@ function AddPet(props) {
     alertPlaceholder.append(wrapper);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    const name = document.getElementById('name').value;
+    const dateOfBirth = document.getElementById('date-of-birth').value;
+    const size = document.getElementById('pet-size').value;
+    const breed = document.getElementById('breed').value;
+    const gender = document.getElementById('gender').value;
+    const hairLength = document.getElementById('hair-length').value;
+    const allergies = document.getElementById('allergies').value;
+    const extraInformation = document.getElementById('extra-information').value;
+    const image = document.getElementById('image').files[0];
 
-    const requestBody = {
-      name: document.getElementById('name').value,
-      pet_type: document.getElementById('pet-type').value,
-      date_of_birth: document.getElementById('date-of-birth').value,
-      size: document.getElementById('pet-size').value,
-      breed: document.getElementById('breed').value,
-      gender: document.getElementById('gender').value,
-      hair_length: document.getElementById('hair-length').value,
-      allergies: document.getElementById('allergies').value,
-      extra_information: document.getElementById('extra-information').value,
-      // image:
-      user_id: currentUser.id,
-    };
-
-    dispatch(createPet(requestBody)).then((response) => {
+    const formData = new FormData();
+    formData.append('pet[name]', name);
+    formData.append('pet[pet_type]', typeOfPet);
+    formData.append('pet[date_of_birth]', dateOfBirth);
+    formData.append('pet[size]', size);
+    formData.append('pet[breed]', breed);
+    formData.append('pet[gender]', gender);
+    formData.append('pet[hair_length]', hairLength);
+    formData.append('pet[allergies]', allergies);
+    formData.append('pet[extra_information]', extraInformation);
+    formData.append('pet[image]', image);
+    formData.append('pet[user_id]', currentUser.id);
+    dispatch(createPet(formData)).then((response) => {
       if (response.error) {
         responseMessage(response.error.message, 'danger');
       } else {
@@ -64,7 +70,7 @@ function AddPet(props) {
     <Modal>
       <ModalHeader title="Add Pet" close={close} />
       <ModalBody>
-        <form onSubmit={handleSubmit}>
+        <div>
           <p>Name:</p>
           <input id="name" type="text" />
           <p>Type:</p>
@@ -91,7 +97,7 @@ function AddPet(props) {
           <p>breed:</p>
           <input id="breed" type="text" />
           <p>gender:</p>
-          <select id="gender">
+          <select id="gender" onChange={setTypeOfPet}>
             {['male', 'female'].map((size) => (
               <option key={size} value={size}>
                 {size}
@@ -106,10 +112,10 @@ function AddPet(props) {
           <input id="extra-information" type="text" />
 
           {/* upload image */}
-          {/* <input id="image" type="file" accept="image/*" /> */}
-        </form>
+          <input id="image" type="file" accept="image/*" />
+        </div>
       </ModalBody>
-      <ModalFooter buttonName="AddPet" buttonFunc={handleSubmit} />
+      <ModalFooter buttonName="Add Pet" buttonFunc={handleSubmit} close={close} />
     </Modal>
   );
 }

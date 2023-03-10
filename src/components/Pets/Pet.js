@@ -2,8 +2,6 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 function Pet({ pet }) {
-  // const dispatch = useDispatch();
-
   return (
     <li className="card mb-3 text-start" style={{ 'max-width': '400px' }}>
       <div className="row g-0">

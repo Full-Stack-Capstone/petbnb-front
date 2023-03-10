@@ -23,7 +23,7 @@ function NavBar() {
   const statusLogin = localStorage.getItem('token');
   useEffect(() => {
     dispatch(checkLoginStatus());
-  }, []);
+  }, [dispatch]);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 

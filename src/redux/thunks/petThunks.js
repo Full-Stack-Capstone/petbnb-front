@@ -18,7 +18,18 @@ export const fetchPet = createAsyncThunk('fetchPet', async (petId) => {
   return response.data;
 });
 
-export const createPet = createAsyncThunk('createPet', async (body) => {
-  const response = await axios.post('http://127.0.0.1:3001/pets/', body, headers);
+// export const createPet = createAsyncThunk('createPet', async (body) => {
+//   const response = await axios.post('http://127.0.0.1:3001/pets/', body, headers);
+//   return response.data;
+// });
+
+export const createPet = createAsyncThunk('createPet', async (credentials) => {
+  const response = await fetch('http://127.0.0.1:3001/pets', {
+    method: 'POST',
+    headers: {
+      Authorization: localStorage.getItem('token'),
+    },
+    body: credentials,
+  });
   return response.data;
 });
