@@ -1,12 +1,19 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import ModalRoot from '../Modal/ModalRoot';
+import ModalService from '../Modal/ModalService';
+import EditPet from './EditPet';
 
 function Pet({ pet }) {
+  const openModalEditPet = () => {
+    ModalService.open(EditPet, { pet });
+  };
+
   return (
     <li className="card mb-3 text-start" style={{ 'max-width': '400px' }}>
       <div className="row g-0">
         <div className="col-md-5">
-          <img src={pet.image} className="img-fluid rounded-start bg-grey" alt="..." />
+          <img src={pet.image_url} className="img-fluid rounded-start bg-grey" alt="..." />
         </div>
         <div className="col-md-7">
           <div className="card-body">
@@ -23,9 +30,8 @@ function Pet({ pet }) {
             </div>
           </div>
           <div className="card-footer text-muted text-center">
-            <a href="/" className="text-decoration-none">
-              Edit
-            </a>
+            <button onClick={openModalEditPet} type="button" className="btn btn-primary m-4">Edit pet</button>
+            <ModalRoot />
           </div>
         </div>
       </div>
@@ -39,7 +45,7 @@ Pet.propTypes = {
   pet: propTypes.shape({
     id: propTypes.number.isRequired,
     name: propTypes.string.isRequired,
-    image: propTypes.string.isRequired,
+    image_url: propTypes.string.isRequired,
     date_of_birth: propTypes.string.isRequired,
     breed: propTypes.string.isRequired,
   }).isRequired,

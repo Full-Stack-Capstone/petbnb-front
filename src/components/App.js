@@ -13,6 +13,7 @@ import ShowRoom from './PetRooms/ShowRoom';
 function App() {
   return (
     <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+      <div id="liveAlertPlaceholder" />
       <NavBar />
       <div className="ontoggle ontoggle-close">
         <Routes>

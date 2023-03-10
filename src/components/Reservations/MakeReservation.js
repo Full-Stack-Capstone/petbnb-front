@@ -20,8 +20,7 @@ function MakeReservation(props) {
   // get all pets of the current user
   useEffect(() => {
     dispatch(fetchPets());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   // create a function to handle the response message
   const responseMessage = (message, status) => {
