@@ -80,9 +80,9 @@ function AllRooms() {
   }
 
   return (
-    <>
+    <div className="d-flex flex-column align-items-center">
       <h1 className="text-center">Rooms with more than 3 of rating</h1>
-      <Carousel>{renderedRooms}</Carousel>
+      <Carousel className="w-75">{renderedRooms}</Carousel>
       <div className="d-flex flex-column">
         <div className="d-flex gap-5 align-items-center m-3">
           <SearchBar onChange={handleSearch} />
@@ -97,7 +97,7 @@ function AllRooms() {
           <RenderedRooms rooms={filteredRooms} />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
