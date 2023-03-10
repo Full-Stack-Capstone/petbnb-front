@@ -17,17 +17,19 @@ import {
 } from 'react-icons/fa';
 import checkLoginStatus from '../../redux/thunks/navLoginThunk';
 import logo from '../../images/logo-no-background.png';
+import logout from '../../redux/thunks/navLogoutThunk';
 
 function NavBar() {
   const dispatch = useDispatch();
-  const statusLogin = localStorage.getItem('token');
+  const auth = localStorage.getItem('token');
   useEffect(() => {
     dispatch(checkLoginStatus());
-  }, []);
+  }, [auth]);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogoutClick = () => {
+    dispatch(logout());
     localStorage.removeItem('token');
     navigate('/');
   };
@@ -49,9 +51,9 @@ function NavBar() {
       <SideNav
         onSelect={(selected) => {
           if (
-            selected === 'home'
-            || selected === 'manage'
-            || selected === 'logout'
+            selected === 'home' ||
+            selected === 'manage' ||
+            selected === 'logout'
           ) {
             navigate('/');
           } else {
@@ -64,7 +66,7 @@ function NavBar() {
         <img src={logo} alt="logo" className="logo-nav" />
         <SideNav.Toggle onClick={handleToggleClick} />
         <SideNav.Nav defaultSelected="home">
-          {!statusLogin && (
+          {!auth && (
             <NavItem eventKey="login">
               <NavIcon>
                 <FaSignInAlt className="icon-nav" />
@@ -72,7 +74,7 @@ function NavBar() {
               <NavText>Login</NavText>
             </NavItem>
           )}
-          {!statusLogin && (
+          {!auth && (
             <NavItem eventKey="signup">
               <NavIcon>
                 <FaArrowRight className="icon-nav" />
@@ -86,7 +88,7 @@ function NavBar() {
             </NavIcon>
             <NavText>Home</NavText>
           </NavItem>
-          {statusLogin && (
+          {auth && (
             <NavItem eventKey="my-pets">
               <NavIcon>
                 <FaDog className="icon-nav" />
@@ -100,7 +102,7 @@ function NavBar() {
             </NavIcon>
             <NavText>Book a room</NavText>
           </NavItem>
-          {statusLogin && (
+          {auth && (
             <NavItem eventKey="manage">
               <NavIcon>
                 <FaList className="icon-nav" />
@@ -120,7 +122,7 @@ function NavBar() {
               </NavItem>
             </NavItem>
           )}
-          {statusLogin && (
+          {auth && (
             <NavItem eventKey="logout" onClick={handleLogoutClick}>
               <NavIcon>
                 <FaSignOutAlt className="icon-nav" />
