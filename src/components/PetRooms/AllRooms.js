@@ -31,7 +31,7 @@ function AllRooms() {
   }, [dispatch]);
 
   const carouselRooms = rooms.filter(
-    (room) => CalculateRating(room.rating) > 3,
+    (room) => CalculateRating(room.attributes.rating) > 3,
   );
 
   let renderedRooms = [];
@@ -41,12 +41,12 @@ function AllRooms() {
         <div className="d-flex justify-content-center align-items-center">
           <img src={petroomImage} alt="room-img" className="img-fluid w-50" />
           <Carousel.Caption>
-            <h2>{room.name}</h2>
-            <p>{`Type of pet living here: ${room.type_of_pet}`}</p>
-            <p>{`Max size accepted: ${room.max_size_accepted}`}</p>
-            <p>{`Owner Name: ${hash[room.user_id]}`}</p>
-            <p>{`Rating: ${CalculateRating(room.rating)}`}</p>
-            <p>{`Price: $${room.price}`}</p>
+            <h2>{room.attributes.name}</h2>
+            <p>{`Type of pet living here: ${room.attributes.type_of_pet}`}</p>
+            <p>{`Max size accepted: ${room.attributes.max_size_accepted}`}</p>
+            <p>{`Owner Name: ${hash[room.attributes.user_id]}`}</p>
+            <p>{`Rating: ${CalculateRating(room.attributes.rating)}`}</p>
+            <p>{`Price: $${room.attributes.price}`}</p>
           </Carousel.Caption>
         </div>
       </Carousel.Item>
@@ -56,13 +56,13 @@ function AllRooms() {
   let filteredRooms = rooms;
   if (typeOfPetFilter) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.type_of_pet === typeOfPetFilter,
+      (room) => room.attributes.type_of_pet === typeOfPetFilter,
     );
   }
 
   if (sizeOfPetFilter) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.max_size_accepted === sizeOfPetFilter,
+      (room) => room.attributes.max_size_accepted === sizeOfPetFilter,
     );
   }
 
@@ -72,7 +72,7 @@ function AllRooms() {
 
   if (Array.isArray(rooms)) {
     filteredRooms = filteredRooms.filter(
-      (room) => room.name.toLowerCase().includes(searchText.toLowerCase()),
+      (room) => room.attributes.name.toLowerCase().includes(searchText.toLowerCase()),
     );
   }
 

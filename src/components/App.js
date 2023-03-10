@@ -12,9 +12,11 @@ import ShowRoom from './PetRooms/ShowRoom';
 
 function App() {
   return (
-    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
-      <NavBar />
-      <div className="ontoggle ontoggle-close">
+    <div className="container grid grid-cols-6 gap-4 mt-4">
+      <div>
+        <NavBar />
+      </div>
+      <div className="ontoggle ontoggle-close col col-12">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
