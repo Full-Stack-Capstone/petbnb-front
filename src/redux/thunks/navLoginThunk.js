@@ -7,20 +7,6 @@ const headers = {
     Authorization: localStorage.getItem('token'),
   },
 };
-// const checkLoginStatus = createAsyncThunk('Check Login Status', async () => {
-//   const response = await axios
-//     .get('http://localhost:3001/current_user', headers)
-//     .then((response) => {
-//       if (response.status === 200) {
-//         console.log('logged in');
-//       }
-//     })
-//     .catch((error) => {
-//       console.log('api errors:', error);
-//       console.log('not logged in');
-//     });
-//   return response.data;
-// });
 
 const checkLoginStatus = createAsyncThunk('CheckLoginStatus', async () => {
   let status = false;

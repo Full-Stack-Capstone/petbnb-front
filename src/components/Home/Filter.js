@@ -6,7 +6,7 @@ function RoomFilters({
   typeOfPetFilter, setTypeOfPetFilter, sizeOfPetFilter, setSizeOfPetFilter,
 }) {
   return (
-    <div>
+    <div className="align-self-end">
       <label htmlFor="typeOfPet">Type of Pet:</label>
       <select
         id="typeOfPet"
