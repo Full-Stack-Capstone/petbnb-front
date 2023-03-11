@@ -29,14 +29,14 @@ export const createPet = createAsyncThunk('createPet', async (credentials) => {
   return response.data;
 });
 
-export const editPet = createAsyncThunk('createPet', async (credentials, petId) => {
-  console.log(petId);
+export const editPet = createAsyncThunk('createPet', async (props) => {
+  const { formData, petId } = props;
   const response = await fetch(`http://127.0.0.1:3001/pets/${petId}`, {
     method: 'PUT',
     headers: {
       Authorization: localStorage.getItem('token'),
     },
-    body: credentials,
+    body: formData,
   });
   return response.data;
 });

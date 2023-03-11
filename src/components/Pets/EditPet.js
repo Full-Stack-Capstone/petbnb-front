@@ -58,8 +58,7 @@ function EditPet(props) {
     formData.append('pet[user_id]', currentUser.id);
 
     const petId = pet.id;
-    console.log(petId);
-    dispatch(editPet(formData, petId)).then((response) => {
+    dispatch(editPet({ formData, petId })).then((response) => {
       if (response.error) {
         responseMessage(response.error.message, 'danger');
       } else {
@@ -106,7 +105,7 @@ function EditPet(props) {
           <p>Hair Length:</p>
           <input id="hair-length" type="text" value={pet.hair_length} placeholder={pet.hair_length} />
           <p>allergies:</p>
-          <input id="allergies" type="text" />
+          <input id="allergies" type="text" value={pet.allergies} placeholder={pet.allergies} />
           <p>Extra Information:</p>
           <input id="extra-information" type="text" value={pet.extra_information} placeholder={pet.extra_information} />
 
