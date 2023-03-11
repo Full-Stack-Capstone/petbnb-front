@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchCurrentUser } from '../../redux/thunks/userThunks';
-import { editPet } from '../../redux/thunks/petThunks';
+import { editPet, fetchPets } from '../../redux/thunks/petThunks';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
 
-function AddPet(props) {
+function EditPet(props) {
   const dispatch = useDispatch();
   const { close, pet } = props;
   const currentUser = useSelector((state) => state.user.data);
@@ -58,6 +58,7 @@ function AddPet(props) {
     formData.append('pet[user_id]', currentUser.id);
 
     const petId = pet.id;
+    console.log(petId);
     dispatch(editPet(formData, petId)).then((response) => {
       if (response.error) {
         responseMessage(response.error.message, 'danger');
@@ -65,6 +66,7 @@ function AddPet(props) {
         responseMessage('Pet edited succesfully', 'success');
       }
       close();
+      dispatch(fetchPets());
     });
   };
 
@@ -117,7 +119,7 @@ function AddPet(props) {
   );
 }
 
-AddPet.propTypes = {
+EditPet.propTypes = {
   close: PropTypes.func.isRequired,
   pet: PropTypes.shape({
     id: PropTypes.number,
@@ -133,4 +135,4 @@ AddPet.propTypes = {
   }).isRequired,
 };
 
-export default AddPet;
+export default EditPet;

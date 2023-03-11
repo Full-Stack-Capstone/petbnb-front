@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchCurrentUser } from '../../redux/thunks/userThunks';
 import { createPet } from '../../redux/thunks/petThunks';
@@ -11,6 +12,7 @@ import ModalFooter from '../Modal/ModalFooter';
 function AddPet(props) {
   const { close } = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const currentUser = useSelector((state) => state.user.data);
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
@@ -60,9 +62,16 @@ function AddPet(props) {
       if (response.error) {
         responseMessage(response.error.message, 'danger');
       } else {
-        responseMessage('Pet room reserved succesfully', 'success');
+        responseMessage('Pet created succesfully', 'success');
       }
       close();
+      // make component reload by navigating back to the component in case user is in path /my-pets
+      if (window.location.pathname === '/my-pets') {
+        navigate('/my-pets');
+      } else {
+        // click on make reservation button to get back to the modal
+        document.getElementById('make-reservation-button').click();
+      }
     });
   };
 

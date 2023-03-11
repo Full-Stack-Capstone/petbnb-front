@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import ModalRoot from '../Modal/ModalRoot';
 import ModalService from '../Modal/ModalService';
 import EditPet from './EditPet';
 
@@ -31,7 +30,6 @@ function Pet({ pet }) {
           </div>
           <div className="card-footer text-muted text-center">
             <button onClick={openModalEditPet} type="button" className="btn btn-primary m-4">Edit pet</button>
-            <ModalRoot />
           </div>
         </div>
       </div>
