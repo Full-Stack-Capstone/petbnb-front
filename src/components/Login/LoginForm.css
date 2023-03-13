@@ -43,7 +43,8 @@ a {
   flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+  height: 90vh;
 }
 
 .login-form {
