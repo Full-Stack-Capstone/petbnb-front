@@ -94,7 +94,14 @@ function NavBar() {
 
   return (
     <div className="nav-contain-main">
-      {isOpen && <div className="overlay" onClick={handleToggleClick} />}
+      {isOpen && (
+        <div
+          className="overlay"
+          onClick={handleToggleClick}
+          onKeyDown={handleToggleClick}
+          role="presentation"
+        />
+      )}
       {!isMobile ? (
         <div className="nav-contain desktop">
           <SideNav
