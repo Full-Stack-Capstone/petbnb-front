@@ -8,13 +8,14 @@ import MyRooms from './PetRooms/MyRooms';
 import MyPets from './Pets/MyPets';
 import MyReservations from './Reservations/MyReservations';
 import ShowRoom from './PetRooms/ShowRoom';
+import './app.css';
 
 function App() {
   return (
-    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+    <div className="container grid grid-cols-6 gap-4">
       <div id="liveAlertPlaceholder" />
       <NavBar />
-      <div className="ontoggle ontoggle-close">
+      <div className="ontoggle ontoggle-close app-wrapper">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />

@@ -66,7 +66,7 @@ function NavBar() {
         navigate('/');
         break;
       case 'all-rooms':
-        navigate('/book-a-room');
+        navigate('/');
         break;
       case 'my-pets':
         navigate('/my-pets');
