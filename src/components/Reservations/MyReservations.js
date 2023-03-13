@@ -9,14 +9,11 @@ function MyReservations() {
   const reservations = useSelector((state) => state.reservations.data);
 
   useEffect(() => {
-    if (!reservations.length) {
-      dispatch(fetchReservations());
-    }
-  });
+    dispatch(fetchReservations());
+  }, [dispatch]);
 
   return (
     <div className=".container-fluid text-center">
-      <div id="liveAlertPlaceholder" />
       <h1 className="my-5">My Reservations</h1>
       <ul className="container-xl">
         {reservations.map((reservation) => (

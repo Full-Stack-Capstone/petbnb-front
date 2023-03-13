@@ -54,7 +54,7 @@ function ShowRoom() {
           </span>
         </div>
       </div>
-      <button onClick={openModalMakeReservation} type="button" className="btn btn-primary m-4">Make Reservation</button>
+      <button id="make-reservation-button" onClick={openModalMakeReservation} type="button" className="btn btn-primary m-4">Make Reservation</button>
       <ModalRoot />
       <div />
     </div>

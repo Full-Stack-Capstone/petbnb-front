@@ -11,10 +11,8 @@ function MyPets() {
   const myPets = useSelector((state) => state.pets.data);
 
   useEffect(() => {
-    if (!myPets.length) {
-      dispatch(fetchPets());
-    }
-  });
+    dispatch(fetchPets());
+  }, [dispatch]);
 
   const openModalAddPet = () => {
     ModalService.open(AddPet);
@@ -25,9 +23,11 @@ function MyPets() {
       <button onClick={openModalAddPet} type="button" className="btn btn-primary m-4">New Pet</button>
       <h1>My Pets</h1>
       <ul className="container-xl">
-        {myPets.map((pet) => (
-          <Pet key={pet.id} pet={pet} />
-        ))}
+        { myPets.length
+          ? myPets.map((pet) => (
+            <Pet key={pet.id} pet={pet} />
+          ))
+          : <p>You have no pets</p>}
       </ul>
       <ModalRoot />
     </div>

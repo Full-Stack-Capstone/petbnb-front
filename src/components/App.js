@@ -11,11 +11,10 @@ import ShowRoom from './PetRooms/ShowRoom';
 
 function App() {
   return (
-    <div className="container ml-5 grid grid-cols-6 gap-4 mt-4">
-      <div>
-        <NavBar />
-      </div>
-      <div className="ontoggle ontoggle-close col col-12">
+    <div className="container mx-auto grid grid-cols-6 gap-4 mt-4">
+      <div id="liveAlertPlaceholder" />
+      <NavBar />
+      <div className="ontoggle ontoggle-close">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
