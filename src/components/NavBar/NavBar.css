@@ -29,7 +29,6 @@ img {
 }
 
 .ontoggle-open {
-  margin-left: 240px;
   filter: blur(3px) opacity(40%);
 }
 

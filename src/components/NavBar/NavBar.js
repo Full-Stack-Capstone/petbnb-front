@@ -48,6 +48,18 @@ function NavBar() {
     navigate('/');
   };
 
+  const handleToggleClick = () => {
+    setIsOpen(!isOpen);
+    const main = document.querySelector('.ontoggle');
+    if (isOpen) {
+      main.classList.remove('ontoggle-open');
+      main.classList.add('ontoggle-close');
+    } else {
+      main.classList.add('ontoggle-open');
+      main.classList.remove('ontoggle-close');
+    }
+  };
+
   const handleNavItemSelect = (eventKey) => {
     switch (eventKey) {
       case 'home':
@@ -78,18 +90,6 @@ function NavBar() {
         break;
     }
     handleToggleClick();
-  };
-
-  const handleToggleClick = () => {
-    setIsOpen(!isOpen);
-    const main = document.querySelector('.ontoggle');
-    if (isOpen) {
-      main.classList.remove('ontoggle-open');
-      main.classList.add('ontoggle-close');
-    } else {
-      main.classList.add('ontoggle-open');
-      main.classList.remove('ontoggle-close');
-    }
   };
 
   return (
