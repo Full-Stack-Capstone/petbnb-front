@@ -17,8 +17,7 @@ function AddPet(props) {
   // get current user info
   useEffect(() => {
     dispatch(fetchCurrentUser());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dispatch]);
 
   // create a function to handle the response message
   const responseMessage = (message, status) => {
