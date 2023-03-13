@@ -8,7 +8,6 @@ import MyRooms from './PetRooms/MyRooms';
 import MyPets from './Pets/MyPets';
 import MyReservations from './Reservations/MyReservations';
 import ShowRoom from './PetRooms/ShowRoom';
-import './NavBar/NavBar.css';
 
 function App() {
   return (
@@ -16,6 +15,7 @@ function App() {
       <div>
         <NavBar />
       </div>
+      <div className="ontoggle ontoggle-close col col-12">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LoginForm />} />
