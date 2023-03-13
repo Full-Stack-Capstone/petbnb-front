@@ -89,26 +89,16 @@ function NavBar() {
       default:
         break;
     }
-    handleToggleClick();
+    setIsOpen(false);
   };
 
   return (
     <div className="nav-contain-main">
+      {isOpen && <div className="overlay" onClick={handleToggleClick} />}
       {!isMobile ? (
         <div className="nav-contain desktop">
           <SideNav
-            onSelect={(selected) => {
-              if (
-                selected === 'home'
-                || selected === 'manage'
-                || selected === 'logout'
-              ) {
-                navigate('/');
-              } else {
-                navigate(`/${selected}`);
-              }
-              handleToggleClick();
-            }}
+            onSelect={handleNavItemSelect}
             className="side-nav"
             onToggle={handleToggleClick}
             expanded={isOpen}

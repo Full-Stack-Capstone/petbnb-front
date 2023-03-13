@@ -28,10 +28,6 @@ img {
   position: fixed;
 }
 
-.ontoggle-open {
-  filter: blur(3px) opacity(40%);
-}
-
 .nav-contain-mobile {
   display: none;
 }
@@ -98,4 +94,14 @@ img {
   .navbar-collapse {
     justify-content: space-around;
   }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999; /* higher than the rest of the page */
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
 }
