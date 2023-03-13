@@ -99,9 +99,9 @@ function NavBar() {
           <SideNav
             onSelect={(selected) => {
               if (
-                selected === 'home' ||
-                selected === 'manage' ||
-                selected === 'logout'
+                selected === 'home'
+                || selected === 'manage'
+                || selected === 'logout'
               ) {
                 navigate('/');
               } else {
