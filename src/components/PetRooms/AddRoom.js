@@ -6,6 +6,7 @@ import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
 import addRoomThunk from '../../redux/thunks/addRoomThunk';
+import { fetchMyRooms } from '../../redux/thunks/fetchRooms';
 
 function AddRoom({ close }) {
   const [name, setName] = useState('');
@@ -14,6 +15,19 @@ function AddRoom({ close }) {
   const [maxSize, setMaxSize] = useState('');
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+  const responseMessage = (message, status) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+      `<div class="alert alert-${status} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>',
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
+  };
 
   const handleSubmit = () => {
     const formData = new FormData();
@@ -22,7 +36,19 @@ function AddRoom({ close }) {
     formData.append('pet_room[type_of_pet]', typeOfPet);
     formData.append('pet_room[max_size_accepted]', maxSize);
     formData.append('pet_room[image]', image);
-    dispatch(addRoomThunk(formData));
+
+    dispatch(addRoomThunk(formData)).then((response) => {
+      if (response.error) {
+        responseMessage(response.error.message, 'danger');
+      } else {
+        responseMessage('Room created succesfully', 'success');
+        dispatch(fetchMyRooms());
+
+        setTimeout(() => {
+          alertPlaceholder.innerHTML = '';
+        }, 2000);
+      }
+    });
   };
 
   const checkBoxChange = (e) => {

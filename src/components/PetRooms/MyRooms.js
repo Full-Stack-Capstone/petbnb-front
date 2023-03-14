@@ -1,19 +1,51 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRooms } from '../../redux/slices/myRoomsSlice';
+import { fetchMyRooms } from '../../redux/thunks/fetchRooms';
 import ModalService from '../Modal/ModalService';
 import ModalRoot from '../Modal/ModalRoot';
 import AddRoom from './AddRoom';
+import deletePetRoom from '../../redux/thunks/deleteRoom';
 
 function MyRooms() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.myRooms.data);
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
   useEffect(() => {
-    dispatch(fetchRooms());
+    dispatch(fetchMyRooms());
   }, [dispatch]);
+
   const openModalAddRoom = () => {
     ModalService.open(AddRoom);
   };
+
+  const responseMessage = (message, status) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+      `<div class="alert alert-${status} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>',
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
+  };
+
+  const deleteRoom = (roomID) => {
+    dispatch(deletePetRoom(roomID)).then((response) => {
+      if (response.error) {
+        responseMessage(response.error.message, 'danger');
+      } else {
+        responseMessage('Pet deleted!', 'success');
+        dispatch(fetchMyRooms());
+
+        setTimeout(() => {
+          alertPlaceholder.innerHTML = '';
+        }, 2000);
+      }
+    });
+  };
+
   const renderedRooms = data.map((d) => (
 
     <div key={d.attributes.id} className="card mb-3 col-sm-5 col-11">
@@ -37,6 +69,7 @@ function MyRooms() {
           </p>
           <p className="card-text"><small className="text-muted">Rating:</small></p>
         </div>
+        <button onClick={() => deleteRoom(d.id)} type="button" className="btn btn-primary m-4">Delete</button>
       </div>
     </div>
   ));

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchCurrentUser } from '../../redux/thunks/userThunks';
-import { createPet } from '../../redux/thunks/petThunks';
+import { createPet, fetchPets } from '../../redux/thunks/petThunks';
 import Modal from '../Modal/Modal';
 import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
@@ -63,6 +63,7 @@ function AddPet(props) {
         responseMessage(response.error.message, 'danger');
       } else {
         responseMessage('Pet created succesfully', 'success');
+        dispatch(fetchPets());
       }
       close();
       // make component reload by navigating back to the component in case user is in path /my-pets

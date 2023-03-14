@@ -3,7 +3,7 @@ import petReducer from './slices/petSlice';
 import petsReducer from './slices/petsSlice';
 import petRoomsReducer from './slices/petRoomsSlice';
 import checkStatusReducer from './slices/navLoginSlice';
-import { myRoomsReducer } from './slices/myRoomsSlice';
+import myRoomsReducer from './slices/myRoomsSlice';
 import petRoomReducer from './slices/petRoomSlice';
 import userReducer from './slices/userSlice';
 import reservationsReducer from './slices/reservationsSlice';
