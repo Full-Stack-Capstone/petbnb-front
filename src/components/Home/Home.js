@@ -92,10 +92,10 @@ function AllRooms() {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <h1 className="text-center">Rooms with more 4 or more stars</h1>
+      <h1 className="text-center">Best rated rooms!</h1>
       <Carousel className="w-75">{renderedRooms}</Carousel>
       <div className="d-flex flex-column">
-        <div className="d-flex gap-5 align-items-center m-3 justify-content-center">
+        <div className="row align-items-center m-3 justify-content-center">
           <SearchBar onChange={handleSearch} />
           <RoomFilters
             typeOfPetFilter={typeOfPetFilter}

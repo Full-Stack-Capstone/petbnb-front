@@ -9,7 +9,7 @@ function Pet({ pet }) {
   };
 
   return (
-    <li className="card mb-3 text-startc col-sm-5">
+    <li className="card mb-3 text-startc col-sm-5 col-12">
       <div className="row g-0">
         <div className="col-md-5">
           <img src={pet.image_url} className="img-fluid rounded-start" alt="..." />
