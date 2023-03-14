@@ -80,47 +80,47 @@ function AddPet(props) {
       <ModalHeader title="Add Pet" close={close} />
       <ModalBody>
         <div>
-          <p>Name:</p>
-          <input id="name" type="text" />
-          <p>Type:</p>
+          <p className="m-0">Name:</p>
+          <input className="mb-2" id="name" type="text" />
+          <p className="m-0">Type:</p>
           {/* give size options to user */}
-          <select id="pet-type">
-            <option>Select type</option>
+          <select className="mb-2" id="pet-type">
+            <option className="mb-2">Select type</option>
             {['dog', 'cat'].map((petType) => (
               <option key={petType} value={petType}>
                 {petType}
               </option>
             ))}
           </select>
-          <p>Date of birth:</p>
-          <input id="date-of-birth" type="date" />
-          <p>Size:</p>
+          <p className="m-0">Date of birth:</p>
+          <input className="mb-2" id="date-of-birth" type="date" />
+          <p className="m-0">Size:</p>
           {/* give size options to user */}
-          <select id="pet-size">
+          <select className="mb-2" id="pet-size">
             {['small', 'medium', 'large'].map((size) => (
               <option key={size} value={size}>
                 {size}
               </option>
             ))}
           </select>
-          <p>breed:</p>
-          <input id="breed" type="text" />
-          <p>gender:</p>
-          <select id="gender">
+          <p className="m-0">Breed:</p>
+          <input className="mb-2" id="breed" type="text" />
+          <p className="m-0">Gender:</p>
+          <select className="mb-2" id="gender">
             {['male', 'female'].map((size) => (
               <option key={size} value={size}>
                 {size}
               </option>
             ))}
           </select>
-          <p>Hair Length:</p>
-          <input id="hair-length" type="text" />
-          <p>allergies:</p>
-          <input id="allergies" type="text" />
-          <p>Extra Information:</p>
-          <input id="extra-information" type="text" />
+          <p className="m-0">Hair Length:</p>
+          <input className="mb-2" id="hair-length" type="text" />
+          <p className="m-0">Allergies:</p>
+          <input className="mb-2" id="allergies" type="text" />
+          <p className="m-0">Extra Information:</p>
+          <input className="mb-2" id="extra-information" type="text" />
 
-          {/* upload image */}
+          <p className="m-0">Upload image:</p>
           <input id="image" type="file" accept="image/*" />
         </div>
       </ModalBody>

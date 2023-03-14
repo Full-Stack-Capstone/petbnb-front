@@ -16,7 +16,7 @@ function MyRooms() {
   };
   const renderedRooms = data.map((d) => (
 
-    <div key={d.attributes.id} className="card mb-3 col-sm-5">
+    <div key={d.attributes.id} className="card mb-3 col-sm-5 col-11">
       <div className="row g-0">
         <div className="col-md-6">
           <img src={d.attributes.image_url} alt="room-img" className="img-fluid rounded-start" />
@@ -42,8 +42,9 @@ function MyRooms() {
   ));
   return (
     <div>
-      <div className="vw-100 d-flex flex-wrap justify-content-around p-2">{renderedRooms}</div>
       <button onClick={openModalAddRoom} type="button" className="btn btn-primary m-4">Add room</button>
+      <h2>My Rooms</h2>
+      <div className="d-flex flex-wrap justify-content-around p-2">{renderedRooms}</div>
       <ModalRoot />
     </div>
   );

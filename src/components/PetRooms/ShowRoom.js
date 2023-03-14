@@ -29,11 +29,11 @@ function ShowRoom() {
   return (
     <div className="container">
       <div id="liveAlertPlaceholder" />
-      <div className="row justify-content-around">
-        <div className="w-50">
+      <div className="row border justify-content-around">
+        <div className="col-sm-6">
           <img src={room.image_url} alt="room-img" className="img-fluid" />
         </div>
-        <div key={room.id} to={`pet_room/${room.id}`} className="col-sm-3 border m-1">
+        <div key={room.id} to={`pet_room/${room.id}`} className="col-sm-6 p-1">
           <h2>{room.name}</h2>
           <h2>
             Room ID:

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SearchBar = ({ onChange }) => (
   <>
-    <input type="text" placeholder="Search..." onChange={onChange} className="w-50" />
+    <input type="text" placeholder="Search..." onChange={onChange} className="col-sm-5 col-10" />
   </>
 );
 

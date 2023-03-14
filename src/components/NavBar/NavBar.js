@@ -10,7 +10,6 @@ import './NavBar.css';
 import {
   FaCalendarCheck,
   FaDog,
-  FaHome,
   FaList,
   FaHouseUser,
   FaHotel,
@@ -62,11 +61,8 @@ function NavBar() {
 
   const handleNavItemSelect = (eventKey) => {
     switch (eventKey) {
-      case 'home':
-        navigate('/');
-        break;
       case 'all-rooms':
-        navigate('/book-a-room');
+        navigate('/');
         break;
       case 'my-pets':
         navigate('/my-pets');
@@ -129,11 +125,11 @@ function NavBar() {
                   <NavText>Sign up</NavText>
                 </NavItem>
               )}
-              <NavItem eventKey="home">
+              <NavItem eventKey="all-rooms">
                 <NavIcon>
-                  <FaHome className="icon-nav" />
+                  <FaHouseUser className="icon-nav" />
                 </NavIcon>
-                <NavText>Home</NavText>
+                <NavText>Book a room</NavText>
               </NavItem>
               {auth && (
                 <NavItem eventKey="my-pets">
@@ -143,12 +139,6 @@ function NavBar() {
                   <NavText>My pets</NavText>
                 </NavItem>
               )}
-              <NavItem eventKey="all-rooms">
-                <NavIcon>
-                  <FaHouseUser className="icon-nav" />
-                </NavIcon>
-                <NavText>Book a room</NavText>
-              </NavItem>
               {auth && (
                 <NavItem eventKey="manage">
                   <NavIcon>
@@ -197,16 +187,6 @@ function NavBar() {
               />
               <Navbar.Collapse id="responsive-nav-bar">
                 <Nav>
-                  <NavItem
-                    eventKey="home"
-                    className="navitem-mobile"
-                    onSelect={handleNavItemSelect}
-                  >
-                    <NavIcon>
-                      <FaHome className="icon-nav icon-mobile" />
-                    </NavIcon>
-                    <NavText>Home</NavText>
-                  </NavItem>
                   <NavItem
                     eventKey="all-rooms"
                     className="navitem-mobile"
