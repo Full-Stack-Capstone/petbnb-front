@@ -83,9 +83,6 @@ function Reservation({ reservation }) {
             </div>
           </div>
           <div className="card-footer text-muted text-center">
-            <a href="/" className="text-decoration-none">
-              Review
-            </a>
             <button onClick={handleDeleteReservation} type="button" className="btn btn-primary m-4">Delete</button>
           </div>
         </div>
