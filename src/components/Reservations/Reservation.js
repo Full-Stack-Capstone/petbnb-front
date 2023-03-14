@@ -5,6 +5,7 @@ import propTypes from 'prop-types';
 import fetchPetRoom from '../../redux/thunks/fetchPetRoom';
 import { fetchPet } from '../../redux/thunks/petThunks';
 import { fetchUser } from '../../redux/thunks/userThunks';
+import { deleteReservation } from '../../redux/thunks/reservationsThunks';
 import './Reservation.css';
 
 function Reservation({ reservation }) {
@@ -12,6 +13,7 @@ function Reservation({ reservation }) {
   const pet = useSelector((state) => state.pet.data);
   const petRoom = useSelector((state) => state.petRoom.data);
   const user = useSelector((state) => state.user.data);
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
   useEffect(() => {
     dispatch(fetchPet(reservation.pet_id));
@@ -29,6 +31,28 @@ function Reservation({ reservation }) {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const responseMessage = (message, status) => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = [
+      `<div class="alert alert-${status} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>',
+    ].join('');
+
+    alertPlaceholder.append(wrapper);
+  };
+
+  const handleDeleteReservation = () => {
+    dispatch(deleteReservation(pet.id)).then((response) => {
+      if (response.status === 200) {
+        responseMessage('Pet deleted!', 'success');
+      } else {
+        responseMessage(response.error.message, 'danger');
+      }
+    });
+  };
 
   return (
     <li className="card mb-3 text-start" style={{ 'max-width': '400px' }}>
@@ -62,6 +86,7 @@ function Reservation({ reservation }) {
             <a href="/" className="text-decoration-none">
               Review
             </a>
+            <button onClick={handleDeleteReservation} type="button" className="btn btn-primary m-4">Delete</button>
           </div>
         </div>
       </div>
