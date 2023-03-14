@@ -18,6 +18,11 @@ export const fetchPet = createAsyncThunk('fetchPet', async (petId) => {
   return response.data;
 });
 
+export const deletePet = createAsyncThunk('deletePet', async (petId) => {
+  const response = await axios.delete(`http://127.0.0.1:3001/pets/${petId}`, headers);
+  return response.data;
+});
+
 export const createPet = createAsyncThunk('createPet', async (credentials) => {
   const response = await fetch('http://127.0.0.1:3001/pets', {
     method: 'POST',

@@ -1,15 +1,5 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-export const fetchRooms = createAsyncThunk('fetchRooms', async () => {
-  const res = await axios.get('http://127.0.0.1:3001/pet_rooms', {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: localStorage.getItem('token'),
-    },
-  });
-  return res.data.data;
-});
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchMyRooms } from '../thunks/fetchRooms';
 
 const myRoomsSlice = createSlice({
   name: 'myRooms',
@@ -19,18 +9,20 @@ const myRoomsSlice = createSlice({
     error: null,
   },
   extraReducers(builder) {
-    builder.addCase(fetchRooms.pending, (state) => {
+    builder.addCase(fetchMyRooms.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(fetchRooms.fulfilled, (state, action) => {
+    builder.addCase(fetchMyRooms.fulfilled, (state, action) => {
       state.isLoading = false;
       state.data = action.payload;
     });
-    builder.addCase(fetchRooms.rejected, (state, action) => {
+    builder.addCase(fetchMyRooms.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error;
     });
   },
 });
 
-export const myRoomsReducer = myRoomsSlice.reducer;
+const myRoomsReducer = myRoomsSlice.reducer;
+
+export default myRoomsReducer;

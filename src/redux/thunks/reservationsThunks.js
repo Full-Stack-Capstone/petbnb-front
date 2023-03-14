@@ -18,3 +18,8 @@ export const createReservation = createAsyncThunk('createReservations', async (b
   const response = await axios.post(url, body, headers);
   return response.data;
 });
+
+export const deleteReservation = createAsyncThunk('deleteReservation', async (reservationId) => {
+  const response = await axios.delete(`http://127.0.0.1:3001/pets/${reservationId}`, headers);
+  return response.data;
+});
