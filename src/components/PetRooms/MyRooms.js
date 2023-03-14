@@ -42,8 +42,9 @@ function MyRooms() {
   ));
   return (
     <div>
-      <div className="vw-100 d-flex flex-wrap justify-content-around p-2">{renderedRooms}</div>
       <button onClick={openModalAddRoom} type="button" className="btn btn-primary m-4">Add room</button>
+      <h2>My Rooms</h2>
+      <div className="d-flex flex-wrap justify-content-around p-2">{renderedRooms}</div>
       <ModalRoot />
     </div>
   );

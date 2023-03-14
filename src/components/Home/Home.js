@@ -42,11 +42,11 @@ function AllRooms() {
   if (Array.isArray(rooms)) {
     renderedRooms = carouselRooms.map((room) => (
       <Carousel.Item key={room.id}>
-        <div className="d-flex align-items-stretch">
-          <div className="w-50">
+        <div className="row">
+          <div className="col-sm-6 bg-carousel">
             <img src={petroomImage} alt="room-img" className="img-fluid" />
           </div>
-          <div className="w-50 bg-carousel d-flex flex-column justify-content-center p-5">
+          <div className="col-sm-6 bg-carousel d-flex flex-column justify-content-center p-5">
             <h2>{room.attributes.name}</h2>
             <p className="mb-2">{`Type of pet living here: ${room.attributes.type_of_pet}`}</p>
             <p className="mb-2">{`Max size accepted: ${room.attributes.max_size_accepted}`}</p>

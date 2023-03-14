@@ -9,10 +9,10 @@ function Pet({ pet }) {
   };
 
   return (
-    <li className="card mb-3 text-start" style={{ 'max-width': '400px' }}>
+    <li className="card mb-3 text-startc col-sm-5">
       <div className="row g-0">
         <div className="col-md-5">
-          <img src={pet.image_url} className="img-fluid rounded-start bg-grey" alt="..." />
+          <img src={pet.image_url} className="img-fluid rounded-start" alt="..." />
         </div>
         <div className="col-md-7">
           <div className="card-body">
