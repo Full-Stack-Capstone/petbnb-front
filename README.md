@@ -83,7 +83,8 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- Coming soon...
+- You can see the live deploy of this app in this [link](https://fantastic-maamoul-0b2722.netlify.app
+)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
