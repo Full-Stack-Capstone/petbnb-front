@@ -4,7 +4,7 @@ import { fetchReservations } from '../../redux/thunks/reservationsThunks';
 import Reservation from './Reservation';
 import './MyReservations.css';
 
-function MyReservations() {
+const MyReservations = () => {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.reservations.data);
 
@@ -22,6 +22,6 @@ function MyReservations() {
       </ul>
     </div>
   );
-}
+};
 
 export default MyReservations;

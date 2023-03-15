@@ -9,7 +9,7 @@ import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
 
-function AddPet(props) {
+const AddPet = (props) => {
   const { close } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -128,7 +128,7 @@ function AddPet(props) {
       <ModalFooter buttonName="Add Pet" buttonFunc={handleSubmit} close={close} />
     </Modal>
   );
-}
+};
 
 AddPet.propTypes = {
   close: PropTypes.func.isRequired,

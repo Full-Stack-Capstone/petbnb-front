@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export default function ModalHeader(props) {
+const ModalHeader = (props) => {
   const { title, close } = props;
   return (
     <div className="modal-header">
@@ -8,7 +8,9 @@ export default function ModalHeader(props) {
       <button onClick={close} type="button" className="btn btn-primary">X</button>
     </div>
   );
-}
+};
+
+export default ModalHeader;
 
 ModalHeader.propTypes = {
   title: PropTypes.string.isRequired,

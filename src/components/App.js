@@ -10,24 +10,22 @@ import MyReservations from './Reservations/MyReservations';
 import ShowRoom from './PetRooms/ShowRoom';
 import './app.css';
 
-function App() {
-  return (
-    <div className="container grid grid-cols-6 gap-4">
-      <div id="liveAlertPlaceholder" />
-      <NavBar />
-      <div className="ontoggle ontoggle-close app-wrapper">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/pet_room/:id" element={<ShowRoom />} />
-          <Route path="/my-rooms" element={<MyRooms />} />
-          <Route path="/my-pets" element={<MyPets />} />
-          <Route path="/my-reservations" element={<MyReservations />} />
-        </Routes>
-      </div>
+const App = () => (
+  <div className="container grid grid-cols-6 gap-4">
+    <div id="liveAlertPlaceholder" />
+    <NavBar />
+    <div className="ontoggle ontoggle-close app-wrapper">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignUpForm />} />
+        <Route path="/pet_room/:id" element={<ShowRoom />} />
+        <Route path="/my-rooms" element={<MyRooms />} />
+        <Route path="/my-pets" element={<MyPets />} />
+        <Route path="/my-reservations" element={<MyReservations />} />
+      </Routes>
     </div>
-  );
-}
+  </div>
+);
 
 export default App;

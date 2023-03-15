@@ -21,15 +21,15 @@ import checkLoginStatus from '../../redux/thunks/navLoginThunk';
 import logo from '../../images/logo-no-background.png';
 import logout from '../../redux/thunks/navLogoutThunk';
 
-function NavBar() {
+const NavBar = () => {
   const [windowDimensions, setWindowDimensions] = useState(null);
   useEffect(() => {
     setWindowDimensions(window.innerWidth);
   }, []);
   useEffect(() => {
-    function handleResize() {
+    const handleResize = () => {
       setWindowDimensions(window.innerWidth);
-    }
+    };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -278,6 +278,6 @@ function NavBar() {
       )}
     </div>
   );
-}
+};
 
 export default NavBar;

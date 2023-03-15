@@ -8,7 +8,7 @@ import { fetchUser } from '../../redux/thunks/userThunks';
 import { deleteReservation } from '../../redux/thunks/reservationsThunks';
 import './Reservation.css';
 
-function Reservation({ reservation }) {
+const Reservation = ({ reservation }) => {
   const dispatch = useDispatch();
   const pet = useSelector((state) => state.pet.data);
   const petRoom = useSelector((state) => state.petRoom.data);
@@ -89,7 +89,7 @@ function Reservation({ reservation }) {
       </div>
     </li>
   );
-}
+};
 
 export default Reservation;
 

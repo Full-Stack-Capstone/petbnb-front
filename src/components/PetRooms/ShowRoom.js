@@ -8,7 +8,7 @@ import ModalRoot from '../Modal/ModalRoot';
 import ModalService from '../Modal/ModalService';
 import MakeReservation from '../Reservations/MakeReservation';
 
-function ShowRoom() {
+const ShowRoom = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const room = useSelector((state) => state.petRooms.data);
@@ -59,6 +59,6 @@ function ShowRoom() {
       <div />
     </div>
   );
-}
+};
 
 export default ShowRoom;

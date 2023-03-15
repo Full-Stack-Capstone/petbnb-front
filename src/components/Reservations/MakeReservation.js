@@ -11,7 +11,7 @@ import ModalService from '../Modal/ModalService';
 import AddPet from '../Pets/AddPet';
 import './MakeReservation.css';
 
-function MakeReservation(props) {
+const MakeReservation = (props) => {
   const dispatch = useDispatch();
   const { close, roomId } = props;
   const petsState = useSelector((state) => state.pets);
@@ -79,7 +79,7 @@ function MakeReservation(props) {
       <ModalFooter buttonName="Reserve" buttonFunc={CreateReservation} />
     </Modal>
   );
-}
+};
 
 export default MakeReservation;
 

@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 
-export default function ModalFooter(props) {
+const ModalFooter = (props) => {
   const { buttonName, buttonFunc, close } = props;
   const handleClick = () => {
     buttonFunc();
@@ -12,4 +12,6 @@ export default function ModalFooter(props) {
       <button onClick={handleClick} type="button" className="btn btn-primary">{buttonName}</button>
     </div>
   );
-}
+};
+
+export default ModalFooter;

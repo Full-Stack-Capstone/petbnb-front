@@ -8,7 +8,7 @@ import ModalBody from '../Modal/ModalBody';
 import ModalHeader from '../Modal/ModalHeader';
 import ModalFooter from '../Modal/ModalFooter';
 
-function EditPet(props) {
+const EditPet = (props) => {
   const dispatch = useDispatch();
   const { close, pet } = props;
   const currentUser = useSelector((state) => state.user.data);
@@ -116,7 +116,7 @@ function EditPet(props) {
       <ModalFooter buttonName="Confirm" buttonFunc={handleSubmit} close={close} />
     </Modal>
   );
-}
+};
 
 EditPet.propTypes = {
   close: PropTypes.func.isRequired,

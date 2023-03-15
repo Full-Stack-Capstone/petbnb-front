@@ -5,7 +5,7 @@ import ModalService from '../Modal/ModalService';
 import EditPet from './EditPet';
 import { deletePet, fetchPets } from '../../redux/thunks/petThunks';
 
-function Pet({ pet }) {
+const Pet = ({ pet }) => {
   const dispatch = useDispatch();
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
 
@@ -64,7 +64,7 @@ function Pet({ pet }) {
       </div>
     </li>
   );
-}
+};
 
 export default Pet;
 

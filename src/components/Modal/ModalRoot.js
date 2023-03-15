@@ -2,11 +2,10 @@
 /* eslint-disable react/forbid-prop-types */
 
 import { useState, useEffect } from 'react';
-// import PropTypes from 'prop-types';
 import ModalService from './ModalService';
 import './ModalRoot.css';
 
-export default function ModalRoot() {
+const ModalRoot = () => {
   const [modal, setModal] = useState({});
 
   useEffect(() => {
@@ -36,10 +35,6 @@ export default function ModalRoot() {
 
     </section>
   );
-}
+};
 
-// ModalRoot.propTypes = {
-//   component: PropTypes.func.isRequired,
-//   props: PropTypes.object.isRequired,
-//   close: PropTypes.func.isRequired,
-// };
+export default ModalRoot;

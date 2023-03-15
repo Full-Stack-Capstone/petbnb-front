@@ -6,7 +6,7 @@ import ModalRoot from '../Modal/ModalRoot';
 import Pet from './Pet';
 import { fetchPets } from '../../redux/thunks/petThunks';
 
-function MyPets() {
+const MyPets = () => {
   const dispatch = useDispatch();
   const myPets = useSelector((state) => state.pets.data);
 
@@ -32,6 +32,6 @@ function MyPets() {
       <ModalRoot />
     </div>
   );
-}
+};
 
 export default MyPets;

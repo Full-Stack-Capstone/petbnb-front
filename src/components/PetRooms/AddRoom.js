@@ -8,7 +8,7 @@ import ModalFooter from '../Modal/ModalFooter';
 import addRoomThunk from '../../redux/thunks/addRoomThunk';
 import { fetchMyRooms } from '../../redux/thunks/fetchRooms';
 
-function AddRoom({ close }) {
+const AddRoom = ({ close }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [typeOfPet, setTypeOfPet] = useState([]);
@@ -102,7 +102,7 @@ function AddRoom({ close }) {
       <ModalFooter buttonName="Add room" buttonFunc={handleSubmit} close={close} />
     </Modal>
   );
-}
+};
 
 export default AddRoom;
 

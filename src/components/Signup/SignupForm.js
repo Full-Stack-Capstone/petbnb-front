@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import signUpUser from '../../redux/thunks/signUpThunk';
 import '../Login/LoginForm.css';
 
-function SignUpForm() {
+const SignUpForm = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -64,6 +64,6 @@ function SignUpForm() {
       </div>
     </div>
   );
-}
+};
 
 export default SignUpForm;

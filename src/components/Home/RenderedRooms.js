@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CalculateRating from '../../utils/CalculateRating';
 import { fetchUsers } from '../../redux/thunks/userThunks';
 
-function RenderedRooms({ rooms }) {
+const RenderedRooms = ({ rooms }) => {
   const dispatch = useDispatch();
   const hash = {};
   const users = useSelector((state) => state.users.data);
@@ -14,7 +14,6 @@ function RenderedRooms({ rooms }) {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-  // users.map((user) => hash[user.id] = user.name);
   users.map((user) => Object.assign(hash, { [user.id]: user.name }));
 
   let renderedRooms = [];
@@ -55,6 +54,6 @@ function RenderedRooms({ rooms }) {
       {renderedRooms}
     </div>
   );
-}
+};
 
 export default RenderedRooms;

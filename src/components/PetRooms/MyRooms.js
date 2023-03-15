@@ -6,7 +6,7 @@ import ModalRoot from '../Modal/ModalRoot';
 import AddRoom from './AddRoom';
 import deletePetRoom from '../../redux/thunks/deleteRoom';
 
-function MyRooms() {
+const MyRooms = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.myRooms.data);
   const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
@@ -81,6 +81,6 @@ function MyRooms() {
       <ModalRoot />
     </div>
   );
-}
+};
 
 export default MyRooms;

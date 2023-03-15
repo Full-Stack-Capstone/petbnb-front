@@ -11,7 +11,7 @@ import RoomFilters from './Filter';
 import SearchBar from './SearchBar';
 import './home.css';
 
-function AllRooms() {
+const AllRooms = () => {
   const dispatch = useDispatch();
   const rooms = useSelector((state) => state.petRooms.data);
   const users = useSelector((state) => state.users.data);
@@ -110,6 +110,6 @@ function AllRooms() {
       </div>
     </div>
   );
-}
+};
 
 export default AllRooms;

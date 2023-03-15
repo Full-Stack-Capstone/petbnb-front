@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import loginUser from '../../redux/thunks/loginThunk';
 import './LoginForm.css';
 
-function LoginForm() {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -53,6 +53,6 @@ function LoginForm() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginForm;
