@@ -1,0 +1,14 @@
+.no-style-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.no-style-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.bg-carousel {
+  background-color: rgb(128, 128, 201);
+  color: white;
+}
