@@ -15,6 +15,7 @@
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
+  - [Kanban Board](#kanba)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -87,6 +88,11 @@
 )
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Kanba Board <a name="kanba"></a>
+- **Link to our kanban board [here](https://github.com/orgs/Full-Stack-Capstone/projects/1)**
+- **Initial state of the Kanban board![image](https://user-images.githubusercontent.com/107952724/222493678-9d10c540-6ff5-4ac1-a33a-5954331f9e35.png)**
+- **The project team had 4 members**
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
